@@ -1,0 +1,1 @@
+<font-name> is a trademark of <studio-name>

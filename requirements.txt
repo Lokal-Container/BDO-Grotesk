@@ -1,0 +1,4 @@
+fonttools
+fontmake
+fontbakery
+brotli
