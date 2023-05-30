@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="utf-8">
+                        <title>Fontbakery Check Report</title>
+                        <style>
+                            
+            html {
+                font-family: sans-serif;
+            }
+
+            h2 {
+                margin-top: 2em;
+            }
+
+            h3 {
+                margin-bottom: 1px;
+            }
+
+            table {
+                border-collapse: collapse;
+            }
+
+            th,
+            td {
+                border: 1px solid #ddd;
+                padding: 0.5em
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            tr {
+                text-align: left;
+            }
+
+            ul {
+                margin-top: 0;
+            }
+
+            .details_item {
+                list-style: none;
+                display: flex;
+                align-items: baseline;
+            }
+
+            .details_indicator {
+                flex: 0 0 5em;
+                font-weight: bold;
+                padding-right: 0.5em;
+                text-align: right;
+            }
+
+            .details_text {
+                flex: 1 0;
+            }
+            
+                        </style>
+                    </head>
+                    <body>
+                    <h1>Fontbakery Technical Report</h1>
+<div>If you think a check is flawed or have an idea for a check, please  file an issue at <a href='https://github.com/googlefonts/fontbakery/issues'>https://github.com/googlefonts/fontbakery/issues</a> and remember to include a pointer to the repo and branch you're checking.</div>
+<h2>Summary</h2>
+            <table>
+            <tr>
+                <th>💥 ERROR</th>
+                <th>🔥 FAIL</th>
+                <th>⚠️ WARN</th>
+                <th>⏩ SKIP</th>
+                <th>ℹ️ INFO</th>
+                <th>✅ PASS</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>2</td>
+                <td>9</td>
+                <td>34</td>
+                <td>2</td>
+                <td>58</td>
+            </tr>
+            <tr>
+                <td>0%</td>
+                <td>2%</td>
+                <td>9%</td>
+                <td>32%</td>
+                <td>2%</td>
+                <td>55%</td>
+            </tr>
+            </table>
+            
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h3>Checking all files are in the same directory.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
+<p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>All files are in the same directory.</p>
+</span></li></ul></div></details>
+<h3>Each font in a family must have the same set of vertical metrics values.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/vertical_metrics&gt;</div>
+<p>We want all fonts within a family to have the same vertical metrics so their line spacing is consistent across the family.</p>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Vertical metrics are the same across the family.</p>
+</span></li></ul></div></details>
+<h3>Name table records must not have trailing spaces.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/trailing_spaces&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No trailing spaces on name table entries.</p>
+</span></li></ul></div></details>
+<h3>Checking OS/2 usWinAscent & usWinDescent.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/win_ascent_and_descent&gt;</div>
+<p>A font's winAscent and winDescent values should be greater than or equal to the head table's yMax, abs(yMin) values. If they are less than these values, clipping can occur on Windows platforms (https://github.com/RedHatBrand/Overpass/issues/33).</p>
+<p>If the font includes tall/deep writing systems such as Arabic or Devanagari, the winAscent and winDescent can be greater than the yMax and abs(yMin) to accommodate vowel marks.</p>
+<p>When the win Metrics are significantly greater than the upm, the linespacing can appear too loose. To counteract this, enabling the OS/2 fsSelection bit 7 (Use_Typo_Metrics), will force Windows to use the OS/2 typo values instead. This means the font developer can control the linespacing with the typo values, whilst avoiding clipping by setting the win values to values greater than the yMax and abs(yMin).</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 usWinAscent &amp; usWinDescent values look good!</p>
+</span></li></ul></div></details>
+<h3>Checking OS/2 Metrics match hhea Metrics.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/os2_metrics_match_hhea&gt;</div>
+<p>OS/2 and hhea vertical metric values should match. This will produce the same linespacing on Mac, GNU+Linux and Windows.</p>
+<ul>
+<li>Mac OS X uses the hhea values.</li>
+<li>Windows uses OS/2 or Win, depending on the OS or fsSelection bit value.</li>
+</ul>
+<p>When OS/2 and hhea vertical metrics match, the same linespacing results on macOS, GNU+Linux and Windows. Unfortunately as of 2018, Google Fonts has released many fonts with vertical metrics that don't match in this way. When we fix this issue in these existing families, we will create a visible change in line/paragraph layout for either Windows or macOS users, which will upset some of them.</p>
+<p>But we have a duty to fix broken stuff, and inconsistent paragraph layout is unacceptably broken when it is possible to avoid it.</p>
+<p>If users complain and prefer the old broken version, they have the freedom to take care of their own situation.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2.sTypoAscender/Descender values match hhea.ascent/descent.</p>
+</span></li></ul></div></details>
+<h3>Checking with ots-sanitize.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/ots&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>ots-sanitize passed this file</p>
+</span></li></ul></div></details>
+<h3>Do we have the latest version of FontBakery installed?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/fontbakery_version&gt;</div>
+<p>Running old versions of FontBakery can lead to a poor report which may include false WARNs and FAILs due do bugs, as well as outdated quality assurance criteria.</p>
+<p>Older versions will also not report problems that are detected by new checks added to the tool in more recent updates.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font Bakery is up-to-date.</p>
+</span></li></ul></div></details>
+<h3>Font contains '.notdef' as its first glyph?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/mandatory_glyphs&gt;</div>
+<p>The OpenType specification v1.8.2 recommends that the first glyph is the '.notdef' glyph without a codepoint assigned and with a drawing.</p>
+<p>https://docs.microsoft.com/en-us/typography/opentype/spec/recom#glyph-0-the-notdef-glyph</p>
+<p>Pre-v1.8, it was recommended that fonts should also contain 'space', 'CR' and '.null' glyphs. This might have been relevant for MacOS 9 applications.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OK</p>
+</span></li></ul></div></details>
+<h3>Font contains glyphs for whitespace characters?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/whitespace_glyphs&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font contains glyphs for whitespace characters.</p>
+</span></li></ul></div></details>
+<h3>Font has **proper** whitespace glyph names?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/whitespace_glyphnames&gt;</div>
+<p>This check enforces adherence to recommended whitespace (codepoints 0020 and 00A0) glyph names according to the Adobe Glyph List.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font has <strong>AGL recommended</strong> names for whitespace glyphs.</p>
+</span></li></ul></div></details>
+<h3>Whitespace glyphs have ink?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/whitespace_ink&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>There is no whitespace glyph with ink.</p>
+</span></li></ul></div></details>
+<h3>Font contains all required tables?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/required_tables&gt;</div>
+<p>According to the OpenType spec https://docs.microsoft.com/en-us/typography/opentype/spec/otff#required-tables</p>
+<p>Whether TrueType or CFF outlines are used in an OpenType font, the following tables are required for the font to function correctly:</p>
+<ul>
+<li>cmap (Character to glyph mapping)</li>
+<li>head (Font header)</li>
+<li>hhea (Horizontal header)</li>
+<li>hmtx (Horizontal metrics)</li>
+<li>maxp (Maximum profile)</li>
+<li>name (Naming table)</li>
+<li>OS/2 (OS/2 and Windows specific metrics)</li>
+<li>post (PostScript information)</li>
+</ul>
+<p>The spec also documents that variable fonts require the following table:</p>
+<ul>
+<li>STAT (Style attributes)</li>
+</ul>
+<p>Depending on the typeface and coverage of a font, certain tables are recommended for optimum quality.</p>
+<p>For example:</p>
+<ul>
+<li>the performance of a non-linear font is improved if the VDMX, LTSH, and hdmx tables are present.</li>
+<li>Non-monospaced Latin fonts should have a kern table.</li>
+<li>A gasp table is necessary if a designer wants to influence the sizes at which grayscaling is used under Windows. Etc.</li>
+</ul>
+
+<details><summary>ℹ️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>ℹ️ INFO</span><span class='details_text'><p>This font contains the following optional tables:</p>
+<pre><code>- loca
+
+- GPOS 
+
+- GSUB [code: optional-tables]
+</code></pre>
+</span></li><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font contains all required tables.</p>
+</span></li></ul></div></details>
+<h3>Are there unwanted tables?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/unwanted_tables&gt;</div>
+<p>Some font editors store source data in their own SFNT tables, and these can sometimes sneak into final release files, which should only have OpenType spec tables.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>There are no unwanted tables.</p>
+</span></li></ul></div></details>
+<h3>Check correctness of STAT table strings </h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/STAT_strings&gt;</div>
+<p>On the STAT table, the &quot;Italic&quot; keyword must not be used on AxisValues for variation axes other than 'ital'.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: has_STAT_table</p>
+</span></li></ul></div></details>
+<h3>Glyph names are all valid?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/valid_glyphnames&gt;</div>
+<p>Microsoft's recommendations for OpenType Fonts states the following:</p>
+<p>'NOTE: The PostScript glyph name must be no longer than 31 characters, include only uppercase or lowercase English letters, European digits, the period or the underscore, i.e. from the set [A-Za-z0-9_.] and should start with a letter, except the special glyph name &quot;.notdef&quot; which starts with a period.'</p>
+<p>https://docs.microsoft.com/en-us/typography/opentype/spec/recom#post-table</p>
+<p>In practice, though, particularly in modern environments, glyph names can be as long as 63 characters.</p>
+<p>According to the &quot;Adobe Glyph List Specification&quot; available at:</p>
+<p>https://github.com/adobe-type-tools/agl-specification</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyph names may be too long for some legacy systems which may expect a maximum 31-char length limit:
+parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_parenright.dlig, parenleft_less_hyphen_parenright.dlig and parenleft_less_less_hyphen_parenright.dlig [code: legacy-long-names]</p>
+</span></li></ul></div></details>
+<h3>Font contains unique glyph names?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/unique_glyphnames&gt;</div>
+<p>Duplicate glyph names prevent font installation on Mac OS X.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font contains unique glyph names.</p>
+</span></li></ul></div></details>
+<h3>Checking with fontTools.ttx</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/ttx_roundtrip&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Hey! It all looks good!</p>
+</span></li></ul></div></details>
+<h3>List all superfamily filepaths</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/superfamily/list&gt;</div>
+<p>This is a merely informative check that lists all sibling families detected by fontbakery.</p>
+<p>Only the fontfiles in these directories will be considered in superfamily-level checks.</p>
+
+<details><summary>ℹ️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>ℹ️ INFO</span><span class='details_text'><p>fonts/ttf [code: family-path]</p>
+</span></li></ul></div></details>
+<h3>Each font in set of sibling families must have the same set of vertical metrics values.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/superfamily/vertical_metrics&gt;</div>
+<p>We may want all fonts within a super-family (all sibling families) to have the same vertical metrics so their line spacing is consistent across the super-family.</p>
+<p>This is an experimental extended version of com.google.fonts/check/family/vertical_metrics and for now it will only result in WARNs.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Sibling families were not detected.</p>
+</span></li></ul></div></details>
+<h3>Ensure indic fonts have the Indian Rupee Sign glyph. </h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/rupee&gt;</div>
+<p>Per Bureau of Indian Standards every font supporting one of the official Indian languages needs to include Unicode Character “₹” (U+20B9) Indian Rupee Sign.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_indic_font</p>
+</span></li></ul></div></details>
+<h3>Check font contains no unreachable glyphs</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/unreachable_glyphs&gt;</div>
+<p>Glyphs are either accessible directly through Unicode codepoints or through substitution rules.</p>
+<p>In Color Fonts, glyphs are also referenced by the COLR table.</p>
+<p>Any glyphs not accessible by either of these means are redundant and serve only to increase the font's file size.</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs could not be reached by codepoint or substitution rules:</p>
+<pre><code>- Q.SS01
+
+- aacute.BRACKET.varAlt01
+
+- abreve.BRACKET.varAlt01
+
+- acircumflex.BRACKET.varAlt01
+
+- adieresis.BRACKET.varAlt01
+
+- agrave.BRACKET.varAlt01
+
+- amacron.BRACKET.varAlt01
+
+- aogonek.BRACKET.varAlt01
+
+- aring.BRACKET.varAlt01
+
+- arrowdown.ss04 
+
+- 4 more.
+</code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists.
+[code: unreachable-glyphs]</p>
+</span></li></ul></div></details>
+<h3>Check if each glyph has the recommended amount of contours.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/contour_count&gt;</div>
+<p>Visually QAing thousands of glyphs by hand is tiring. Most glyphs can only be constructured in a handful of ways. This means a glyph's contour count will only differ slightly amongst different fonts, e.g a 'g' could either be 2 or 3 contours, depending on whether its double story or single story.</p>
+<p>However, a quotedbl should have 2 contours, unless the font belongs to a display family.</p>
+<p>This check currently does not cover variable fonts because there's plenty of alternative ways of constructing glyphs with multiple outlines for each feature in a VarFont. The expected contour count data for this check is currently optimized for the typical construction of glyphs in static fonts.</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>This check inspects the glyph outlines and detects the total number of contours in each of them. The expected values are infered from the typical ammounts of contours observed in a large collection of reference font families. The divergences listed below may simply indicate a significantly different design on some of your glyphs. On the other hand, some of these may flag actual bugs in the font such as glyphs mapped to an incorrect codepoint. Please consider reviewing the design and codepoint assignment of these to make sure they are correct.</p>
+<p>The following glyphs do not have the recommended number of contours:</p>
+<pre><code>- Glyph name: Eth	Contours detected: 3	Expected: 2
+
+- Glyph name: aogonek	Contours detected: 3	Expected: 2
+
+- Glyph name: Dcroat	Contours detected: 3	Expected: 2
+
+- Glyph name: dcroat	Contours detected: 3	Expected: 2
+
+- Glyph name: hbar	Contours detected: 2	Expected: 1
+
+- Glyph name: oe	Contours detected: 4	Expected: 3
+
+- Glyph name: Tbar	Contours detected: 2	Expected: 1
+
+- Glyph name: Uogonek	Contours detected: 2	Expected: 1
+
+- Glyph name: uogonek	Contours detected: 2	Expected: 1
+
+- Glyph name: uni21B9	Contours detected: 2	Expected: 4 
+
+- 18 more.
+</code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists.
+[code: contour-count]</p>
+</span></li></ul></div></details>
+<h3>Does the font contain a soft hyphen?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/soft_hyphen&gt;</div>
+<p>The 'Soft Hyphen' character (codepoint 0x00AD) is used to mark a hyphenation possibility within a word in the absence of or overriding dictionary hyphenation.</p>
+<p>It is supposed to be zero-width and invisible.</p>
+<p>It is also mostly an obsolete mechanism now, and the character is typicaly only included in fonts for legacy codepage coverage.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Looks good!</p>
+</span></li></ul></div></details>
+<h3>Does the font contain chws and vchw features?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/cjk_chws_feature&gt;</div>
+<p>The W3C recommends the addition of chws and vchw features to CJK fonts to enhance the spacing of glyphs in environments which do not fully support JLREQ layout rules.</p>
+<p>The chws_tool utility (https://github.com/googlefonts/chws_tool) can be used to add these features automatically.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_cjk_font</p>
+</span></li></ul></div></details>
+<h3>Ensure component transforms do not perform scaling or rotation.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/transformed_components&gt;</div>
+<p>Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.</p>
+<p>From a designers point of view, this sounds like a win (less work). However, such approaches can lead to rasterization issues, such as having the 'u' not sitting on the baseline at certain sizes after running the font through ttfautohint.</p>
+<p>Other issues are outlines that end up reversed when only one dimension is flipped while the other isn't.</p>
+<p>As of July 2019, Marc Foley observed that ttfautohint assigns cvt values to transformed glyphs as if they are not transformed and the result is they render very badly, and that vttLib does not support flipped components.</p>
+<p>When building the font with fontmake, the problem can be fixed by adding this to the command line:</p>
+<p>--filter DecomposeTransformedComponentsFilter</p>
+
+<details><summary>🔥 <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The following glyphs had components with scaling or rotation
+or inverted outline direction:</p>
+<ul>
+<li>exclamdown (component exclam)</li>
+<li>backslash (component slash)</li>
+<li>backslash.ss02 (component slash.ss02)</li>
+<li>braceright (component braceleft)</li>
+<li>uni2E29 (component uni2E28)</li>
+<li>braceright.case (component braceleft.case)</li>
+<li>uni3011.case (component uni3010.case)</li>
+<li>uni27E9 (component uni27E8)</li>
+<li>uni27EB (component uni27EA)</li>
+<li>uni27ED (component uni27EC)</li>
+<li>arrowdown (component arrowup)</li>
+<li>arrowleft (component arrowright)</li>
+<li>uni21AA (component uni21A9)</li>
+<li>uni21B3 (component uni21B2)</li>
+<li>uni21BB (component uni21BA)</li>
+<li>uni21CA (component uni21C8)</li>
+<li>arrowdown.ss04 (component arrowup.ss04)</li>
+<li>uni25A8 (component uni25A7)</li>
+<li>uni232B (component uni2326)</li>
+<li>less_hyphen_hyphen.dlig (component arrowright)
+[code: transformed-components]</li>
+</ul>
+</span></li></ul></div></details>
+<h3>Ensure dotted circle glyph is present and can attach marks.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/dotted_circle&gt;</div>
+<p>The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.</p>
+<p>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.</p>
+<p>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>No dotted circle glyph present [code: missing-dotted-circle]</p>
+</span></li></ul></div></details>
+<h3>Ensure soft_dotted characters lose their dot when combined with marks that replace the dot.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/soft_dotted&gt;</div>
+<p>An accent placed on characters with a &quot;soft dot&quot;, like i or j, causes the dot to disappear. An explicit dot above can be added where required. See &quot;Diacritics on i and j&quot; in Section 7.1, &quot;Latin&quot; in The Unicode Standard.</p>
+<p>Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt</p>
+
+<details><summary>🔥 <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į̂ į̄ į̌</p>
+<p>The dot of soft dotted characters should disappear in other cases, for example: ĭ̦ i̦̇ i̦̊ i̦̋ i̦̒ j̦̀ j̦̄ j̦̆ j̦̇ j̦̈ j̦̊ j̦̋ ǰ̦ j̦̒ į̆ į̇ į̈ į̊ į̋ į̒ [code: soft-dotted]</p>
+</span></li></ul></div></details>
+<h3>Ensure no GPOS7 lookups are present.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos7&gt;</div>
+<p>Versions of fonttools &gt;=4.14.0 (19 August 2020) perform an optimisation on chained contextual lookups, expressing GSUB6 as GSUB5 and GPOS8 and GPOS7 where possible (when there are no suffixes/prefixes for all rules in the lookup).</p>
+<p>However, makeotf has never generated these lookup types and they are rare in practice. Perhaps before of this, Mac's CoreText shaper does not correctly interpret GPOS7, meaning that these lookups will be ignored by the shaper, and fonts containing these lookups will have unintended positioning errors.</p>
+<p>To fix this warning, rebuild the font with a recent version of fonttools.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font has no GPOS7 lookups</p>
+</span></li></ul></div></details>
+<h3>Ensure that the font can be rasterized by FreeType.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/freetype_rasterizer&gt;</div>
+<p>Malformed fonts can cause FreeType to crash.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>FreeType is not available; to install it, invoke the 'freetype' extra when installing Font Bakery. [code: freetype-not-installed]</p>
+</span></li></ul></div></details>
+<h3>Font has the proper sfntVersion value?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/sfnt_version&gt;</div>
+<p>OpenType fonts that contain TrueType outlines should use the value of 0x00010000 for the sfntVersion. OpenType fonts containing CFF data (version 1 or 2) should use 0x4F54544F ('OTTO', when re-interpreted as a Tag) for sfntVersion.</p>
+<p>Fonts with the wrong sfntVersion value are rejected by FreeType.</p>
+<p>https://docs.microsoft.com/en-us/typography/opentype/spec/otff#table-directory</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font has the correct sfntVersion value.</p>
+</span></li></ul></div></details>
+<h3>Space and non-breaking space have the same width?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/whitespace_widths&gt;</div>
+<p>If the space and nbspace glyphs have different widths, then Google Workspace has problems with the font.</p>
+<p>The nbspace is used to replace the space character in multiple situations in documents; such as the space before punctuation in languages that do that. It avoids the punctuation to be separated from the last word and go to next line.</p>
+<p>This is automatic substitution by the text editors, not by fonts. It is also used by designers in text composition practice to create nicely shaped paragraphs. If the space and the nbspace are not the same width, it breaks the text composition of documents.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Space and non-breaking space have the same width.</p>
+</span></li></ul></div></details>
+<h3>Detect any interpolation issues in the font.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/interpolation_issues&gt;</div>
+<p>When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.</p>
+<p>Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h3>Check math signs have the same width.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/math_signs_width&gt;</div>
+<p>It is a common practice to have math signs sharing the same width (preferably the same width as tabular figures accross the entire font family).</p>
+<p>This probably comes from the will to avoid additional tabular math signs knowing that their design can easily share the same width.</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The most common width is 603 among a set of 3 math glyphs.
+The following math glyphs have a different width, though:</p>
+<p>Width = 600:
+plus</p>
+<p>Width = 609:
+equal</p>
+<p>Width = 602:
+minus, logicalnot</p>
+<p>Width = 608:
+plusminus</p>
+<p>Width = 612:
+multiply</p>
+<p>Width = 604:
+lessequal, divide</p>
+<p>Width = 615:
+approxequal</p>
+<p>Width = 606:
+notequal
+[code: width-outliers]</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.cff&gt; ⏩⏩⏩</h2>
+<h3>Is the CFF subr/gsubr call depth > 10?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/cff_call_depth&gt;</div>
+<p>Per &quot;The Type 2 Charstring Format, Technical Note #5177&quot;, the &quot;Subr nesting, stack limit&quot; is 10.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_cff</p>
+</span></li></ul></div></details>
+<h3>Is the CFF2 subr/gsubr call depth > 10?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/cff2_call_depth&gt;</div>
+<p>Per &quot;The CFF2 CharString Format&quot;, the &quot;Subr nesting, stack limit&quot; is 10.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_cff2</p>
+</span></li></ul></div></details>
+<h3>Does the font use deprecated CFF operators or operations?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/cff_deprecated_operators&gt;</div>
+<p>The 'dotsection' operator and the use of 'endchar' to build accented characters from the Adobe Standard Encoding Character Set (&quot;seac&quot;) are deprecated in CFF. Adobe recommends repairing any fonts that use these, especially endchar-as-seac, because a rendering issue was discovered in Microsoft Word with a font that makes use of this operation. The check treats that usage as a FAIL. There are no known ill effects of using dotsection, so that check is a WARN.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_cff</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.cmap&gt; </h2>
+<h3>Fonts have equal unicode encodings?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/equal_unicode_encodings&gt;</div>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Fonts have equal unicode encodings.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.head&gt; </h2>
+<h3>Make sure all font files have the same version value.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/equal_font_versions&gt;</div>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>All font files have the same version.</p>
+</span></li></ul></div></details>
+<h3>Checking unitsPerEm value is reasonable.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/unitsperem&gt;</div>
+<p>According to the OpenType spec:</p>
+<p>The value of unitsPerEm at the head table must be a value between 16 and 16384. Any value in this range is valid.</p>
+<p>In fonts that have TrueType outlines, a power of 2 is recommended as this allows performance optimizations in some rasterizers.</p>
+<p>But 1000 is a commonly used value. And 2000 may become increasingly more common on Variable Fonts.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>The unitsPerEm value (1000) on the 'head' table is reasonable.</p>
+</span></li></ul></div></details>
+<h3>Checking font version fields (head and name table).</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/font_version&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>All font version fields match.</p>
+</span></li></ul></div></details>
+<h3>Checking head.macStyle value.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/mac_style&gt;</div>
+<p>The values of the flags on the macStyle entry on the 'head' OpenType table that describe whether a font is bold and/or italic must be coherent with the actual style of the font as inferred by its filename.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>head macStyle ITALIC bit is properly set.</p>
+</span></li><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>head macStyle BOLD bit is properly set.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.os2&gt; ⏩</h2>
+<h3>Fonts have consistent PANOSE proportion?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/panose_proportion&gt;</div>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Fonts have consistent PANOSE proportion.</p>
+</span></li></ul></div></details>
+<h3>Fonts have consistent PANOSE family type?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/panose_familytype&gt;</div>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Fonts have consistent PANOSE family type.</p>
+</span></li></ul></div></details>
+<h3>Check that OS/2.fsSelection bold & italic settings are unique for each NameID1</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/family/bold_italic_unique_for_nameid1&gt;</div>
+<p>Per the OpenType spec: name ID 1 'is used in combination with Font Subfamily name (name ID 2), and should be shared among at most four fonts that differ only in weight or style.</p>
+<p>This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.</p>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>The OS/2.fsSelection bold &amp; italic settings were unique within each compatible family group.</p>
+</span></li></ul></div></details>
+<h3>Check if OS/2 xAvgCharWidth is correct.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/xavgcharwidth&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 xAvgCharWidth value is correct.</p>
+</span></li></ul></div></details>
+<h3>Check if OS/2 fsSelection matches head macStyle bold and italic bits.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/fsselection_matches_macstyle&gt;</div>
+<p>The bold and italic bits in OS/2.fsSelection must match the bold and italic bits in head.macStyle per the OpenType spec.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>The OS/2.fsSelection and head.macStyle bold and italic settings match.</p>
+</span></li></ul></div></details>
+<h3>Check code page character ranges</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/code_pages&gt;</div>
+<p>At least some programs (such as Word and Sublime Text) under Windows 7 do not recognize fonts unless code page bits are properly set on the ulCodePageRange1 (and/or ulCodePageRange2) fields of the OS/2 table.</p>
+<p>More specifically, the fonts are selectable in the font menu, but whichever Windows API these applications use considers them unsuitable for any character set, so anything set in these fonts is rendered with Arial as a fallback font.</p>
+<p>This check currently does not identify which code pages should be set. Auto-detecting coverage is not trivial since the OpenType specification leaves the interpretation of whether a given code page is &quot;functional&quot; or not open to the font developer to decide.</p>
+<p>So here we simply detect as a FAIL when a given font has no code page declared at all.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>At least one code page is defined.</p>
+</span></li></ul></div></details>
+<h3>Checking OS/2 achVendID against configuration.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.thetypefounders/check/vendor_id&gt;</div>
+<p>When a font project's Vendor ID is specified explicitely on FontBakery's configuration file, all binaries must have a matching vendor identifier value in the OS/2 table.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Add the <code>vendor_id</code> key to a <code>fontbakery.yaml</code> file on your font project directory to enable this check.
+You'll also need to use the <code>--configuration</code> flag when invoking fontbakery.</p>
+</span></li></ul></div></details>
+<h3>Checking OS/2 fsSelection value.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/fsselection&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 fsSelection REGULAR bit is properly set.</p>
+</span></li><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 fsSelection ITALIC bit is properly set.</p>
+</span></li><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 fsSelection BOLD bit is properly set.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.post&gt; </h2>
+<h3>Fonts have consistent underline thickness?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/underline_thickness&gt;</div>
+<p>Dave C Lemon (Adobe Type Team) recommends setting the underline thickness to be consistent across the family.</p>
+<p>If thicknesses are not family consistent, words set on the same line which have different styles look strange.</p>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Fonts have consistent underline thickness.</p>
+</span></li></ul></div></details>
+<h3>Font has correct post table version?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/post_table_version&gt;</div>
+<p>Format 2.5 of the 'post' table was deprecated in OpenType 1.3 and should not be used.</p>
+<p>According to Thomas Phinney, the possible problem with post format 3 is that under the right combination of circumstances, one can generate PDF from a font with a post format 3 table, and not have accurate backing store for any text that has non-default glyphs for a given codepoint.</p>
+<p>It will look fine but not be searchable. This can affect Latin text with high-end typography, and some complex script writing systems, especially with higher-quality fonts. Those circumstances generally involve creating a PDF by first printing a PostScript stream to disk, and then creating a PDF from that stream without reference to the original source document. There are some workflows where this applies,but these are not common use cases.</p>
+<p>Apple recommends against use of post format version 4 as &quot;no longer necessary and should be avoided&quot;. Please see the Apple TrueType reference documentation for additional details.</p>
+<p>https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6post.html</p>
+<p>Acceptable post format versions are 2 and 3 for TTF and OTF CFF2 builds, and post format 3 for CFF builds.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font has an acceptable post format 2.0 table version.</p>
+</span></li></ul></div></details>
+<h3>Checking post.italicAngle value.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/italic_angle&gt;</div>
+<p>The 'post' table italicAngle property should be a reasonable amount, likely not more than 30°. Note that in the OpenType specification, the value is negative for a rightward lean.</p>
+<p>https://docs.microsoft.com/en-us/typography/opentype/spec/post</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Value of post.italicAngle is 0.0 with style=&quot;Bold&quot;.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.name&gt; ⏩</h2>
+<h3>Verify that each group of fonts with the same nameID 1 has maximum of 4 fonts.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/family/max_4_fonts_per_family_name&gt;</div>
+<p>Per the OpenType spec:</p>
+<p>'The Font Family name [...] should be shared among at most four fonts that differ only in weight or style [...]'</p>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>There were no more than 4 fonts per family name.</p>
+</span></li></ul></div></details>
+<h3>Check name table for empty records.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/name/empty_records&gt;</div>
+<p>Check the name table for empty records, as this can cause problems in Adobe apps.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No empty name table records found.</p>
+</span></li></ul></div></details>
+<h3>Description strings in the name table must not contain copyright info.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/no_copyright_on_description&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Description strings in the name table do not contain any copyright string.</p>
+</span></li></ul></div></details>
+<h3>Checking correctness of monospaced metadata.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/monospace&gt;</div>
+<p>There are various metadata in the OpenType spec to specify if a font is monospaced or not. If the font is not truly monospaced, then no monospaced metadata should be set (as sometimes they mistakenly are...)</p>
+<p>Requirements for monospace fonts:</p>
+<ul>
+<li>
+<p>post.isFixedPitch - &quot;Set to 0 if the font is proportionally spaced, non-zero if the font is not proportionally spaced (monospaced)&quot; (https://www.microsoft.com/typography/otspec/post.htm)</p>
+</li>
+<li>
+<p>hhea.advanceWidthMax must be correct, meaning no glyph's width value is greater. (https://www.microsoft.com/typography/otspec/hhea.htm)</p>
+</li>
+<li>
+<p>OS/2.panose.bProportion must be set to 9 (monospace) on latin text fonts.</p>
+</li>
+<li>
+<p>OS/2.panose.bSpacing must be set to 3 (monospace) on latin hand written or latin symbol fonts.</p>
+</li>
+<li>
+<p>Spec says: &quot;The PANOSE definition contains ten digits each of which currently describes up to sixteen variations. Windows uses bFamilyType, bSerifStyle and bProportion in the font mapper to determine family type. It also uses bProportion to determine if the font is monospaced.&quot; (https://www.microsoft.com/typography/otspec/os2.htm#pan https://monotypecom-test.monotype.de/services/pan2)</p>
+</li>
+<li>
+<p>OS/2.xAvgCharWidth must be set accurately. &quot;OS/2.xAvgCharWidth is used when rendering monospaced fonts, at least by Windows GDI&quot; (http://typedrawers.com/discussion/comment/15397/#Comment_15397)</p>
+</li>
+</ul>
+<p>Also we should report an error for glyphs not of average width.</p>
+<p>Please also note:</p>
+<p>Thomas Phinney told us that a few years ago (as of December 2019), if you gave a font a monospace flag in Panose, Microsoft Word would ignore the actual advance widths and treat it as monospaced.</p>
+<p>Source: https://typedrawers.com/discussion/comment/45140/#Comment_45140</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font is not monospaced and all related metadata look good. [code: good]</p>
+</span></li></ul></div></details>
+<h3>Does full font name begin with the font family name?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/match_familyname_fullfont&gt;</div>
+<p>The FULL_FONT_NAME entry in the ‘name’ table should start with the same string as the Family Name (FONT_FAMILY_NAME, TYPOGRAPHIC_FAMILY_NAME or WWS_FAMILY_NAME).</p>
+<p>If the Family Name is not included as the first part of the Full Font Name, and the user embeds the font in a document using a Microsoft Office app, the app will fail to render the font when it opens the document again.</p>
+<p>NOTE: Up until version 1.5, the OpenType spec included the following exception in the definition of Full Font Name:</p>
+<p>&quot;An exception to the [above] definition of Full font name is for Microsoft platform strings for CFF OpenType fonts: in this case, the Full font name string must be identical to the PostScript FontName in the CFF Name INDEX.&quot;</p>
+<p>https://docs.microsoft.com/en-us/typography/opentype/otspec150/name#name-ids</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Full font name begins with the font family name.</p>
+</span></li></ul></div></details>
+<h3>Font follows the family naming recommendations?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family_naming_recommendations&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font follows the family naming recommendations.</p>
+</span></li></ul></div></details>
+<h3>CFF table FontName must match name table ID 6 (PostScript name).</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/name/postscript_vs_cff&gt;</div>
+<p>The PostScript name entries in the font's 'name' table should match the FontName string in the 'CFF ' table.</p>
+<p>The 'CFF ' table has a lot of information that is duplicated in other tables. This information should be consistent across tables, because there's no guarantee which table an app will get the data from.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_cff</p>
+</span></li></ul></div></details>
+<h3>Name table ID 6 (PostScript name) must be consistent across platforms.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/name/postscript_name_consistency&gt;</div>
+<p>The PostScript name entries in the font's 'name' table should be consistent across platforms.</p>
+<p>This is the TTF/CFF2 equivalent of the CFF 'name/postscript_vs_cff' check.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Entries in the &quot;name&quot; table for ID 6 (PostScript name) are consistent.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.loca&gt; </h2>
+<h3>Does the number of glyphs in the loca table match the maxp table?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/loca/maxp_num_glyphs&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>'loca' table matches numGlyphs in 'maxp' table.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.hhea&gt; </h2>
+<h3>Checking Vertical Metric Linegaps.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/linegaps&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 sTypoLineGap and hhea lineGap are both 0.</p>
+</span></li></ul></div></details>
+<h3>MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/maxadvancewidth&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables.</p>
+</span></li></ul></div></details>
+<h3>Check hhea.caretSlopeRise and hhea.caretSlopeRun</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/caret_slope&gt;</div>
+<p>Checks whether hhea.caretSlopeRise and hhea.caretSlopeRun match with post.italicAngle.</p>
+<p>For Upright fonts, you can set hhea.caretSlopeRise to 1 and hhea.caretSlopeRun to 0.</p>
+<p>For Italic fonts, you can set hhea.caretSlopeRise to head.unitsPerEm and calculate hhea.caretSlopeRun like this: round(math.tan(math.radians(-1 * font[&quot;post&quot;].italicAngle)) * font[&quot;head&quot;].unitsPerEm)</p>
+<p>This check allows for a 0.1° rounding difference between the Italic angle as calculated by the caret slope and post.italicAngle</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>hhea.caretSlopeRise and hhea.caretSlopeRun match with post.italicAngle.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.dsig&gt; </h2>
+<h3>Does the font have a DSIG table?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/dsig&gt;</div>
+<p>Microsoft Office 2013 and below products expect fonts to have a digital signature declared in a DSIG table in order to implement OpenType features. The EOL date for Microsoft Office 2013 products is 4/11/2023. This issue does not impact Microsoft Office 2016 and above products.</p>
+<p>As we approach the EOL date, it is now considered better to completely remove the table.</p>
+<p>But if you still want your font to support OpenType features on Office 2013, then you may find it handy to add a fake signature on a placeholder DSIG table by running one of the helper scripts provided at https://github.com/googlefonts/gftools</p>
+<p>Reference: https://github.com/googlefonts/fontbakery/issues/1845</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>ok</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.gdef&gt; </h2>
+<h3>Check glyphs in mark glyph class are non-spacing.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gdef_spacing_marks&gt;</div>
+<p>Glyphs in the GDEF mark glyph class should be non-spacing.</p>
+<p>Spacing glyphs in the GDEF mark glyph class may have incorrect anchor positioning that was only intended for building composite glyphs during design.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font does not has spacing glyphs in the GDEF mark glyph class.</p>
+</span></li></ul></div></details>
+<h3>Check mark characters are in GDEF mark glyph class.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gdef_mark_chars&gt;</div>
+<p>Mark characters should be in the GDEF mark glyph class.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font does not have mark characters not in the GDEF mark glyph class.</p>
+</span></li></ul></div></details>
+<h3>Check GDEF mark glyph class doesn't have characters that are not marks.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gdef_non_mark_chars&gt;</div>
+<p>Glyphs in the GDEF mark glyph class become non-spacing and may be repositioned if they have mark anchors.</p>
+<p>Only combining mark glyphs should be in that class. Any non-mark glyph must not be in that class, in particular spacing glyphs.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font does not have non-mark characters in the GDEF mark glyph class.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.gpos&gt; </h2>
+<h3>Does GPOS table have kerning information? This check skips monospaced fonts as defined by post.isFixedPitch value</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos_kerning_info&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>GPOS table check for kerning information passed.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.kern&gt; </h2>
+<h3>Is there a usable "kern" table declared in the font?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/kern_table&gt;</div>
+<p>Even though all fonts should have their kerning implemented in the GPOS table, there may be kerning info at the kern table as well.</p>
+<p>Some applications such as MS PowerPoint require kerning info on the kern table. More specifically, they require a format 0 kern subtable from a kern table version 0 with only glyphs defined in the cmap table, which is the only one that Windows understands (and which is also the simplest and more limited of all the kern subtables).</p>
+<p>Google Fonts ingests fonts made for download and use on desktops, and does all web font optimizations in the serving pipeline (using libre libraries that anyone can replicate.)</p>
+<p>Ideally, TTFs intended for desktop users (and thus the ones intended for Google Fonts) should have both KERN and GPOS tables.</p>
+<p>Given all of the above, we currently treat kerning on a v0 kern table as a good-to-have (but optional) feature.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font does not declare an optional &quot;kern&quot; table.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.glyf&gt; </h2>
+<h3>Is there any unused data at the end of the glyf table?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/glyf_unused_data&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>There is no unused data at the end of the glyf table.</p>
+</span></li></ul></div></details>
+<h3>Check for points out of bounds.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/points_out_of_bounds&gt;</div>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>All glyph paths have coordinates within bounds!</p>
+</span></li></ul></div></details>
+<h3>Check glyphs do not have duplicate components which have the same x,y coordinates.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/glyf_non_transformed_duplicate_components&gt;</div>
+<p>There have been cases in which fonts had faulty double quote marks, with each of them containing two single quote marks as components with the same x, y coordinates which makes them visually look like single quote marks.</p>
+<p>This check ensures that glyphs do not contain duplicate components which have the same x,y coordinates.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Glyphs do not contain duplicate components which have the same x,y coordinates.</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.fvar&gt; ⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩</h2>
+<h3>The variable font 'wght' (Weight) axis coordinate must be 400 on the 'Regular' instance.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/regular_wght_coord&gt;</div>
+<p>According to the Open-Type spec's registered design-variation tag 'wght' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wght</p>
+<p>If a variable font has a 'wght' (Weight) axis, then the coordinate of its 'Regular' instance is required to be 400.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_wght_axis</p>
+</span></li></ul></div></details>
+<h3>The variable font 'wdth' (Width) axis coordinate must be 100 on the 'Regular' instance.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/regular_wdth_coord&gt;</div>
+<p>According to the Open-Type spec's registered design-variation tag 'wdth' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wdth</p>
+<p>If a variable font has a 'wdth' (Width) axis, then the coordinate of its 'Regular' instance is required to be 100.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_wdth_axis</p>
+</span></li></ul></div></details>
+<h3>The variable font 'slnt' (Slant) axis coordinate must be zero on the 'Regular' instance.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/regular_slnt_coord&gt;</div>
+<p>According to the Open-Type spec's registered design-variation tag 'slnt' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_slnt</p>
+<p>If a variable font has a 'slnt' (Slant) axis, then the coordinate of its 'Regular' instance is required to be zero.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_slnt_axis</p>
+</span></li></ul></div></details>
+<h3>The variable font 'ital' (Italic) axis coordinate must be zero on the 'Regular' instance.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/regular_ital_coord&gt;</div>
+<p>According to the Open-Type spec's registered design-variation tag 'ital' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_ital</p>
+<p>If a variable font has a 'ital' (Italic) axis, then the coordinate of its 'Regular' instance is required to be zero.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_ital_axis</p>
+</span></li></ul></div></details>
+<h3>The variable font 'opsz' (Optical Size) axis coordinate should be between 10 and 16 on the 'Regular' instance.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/regular_opsz_coord&gt;</div>
+<p>According to the Open-Type spec's registered design-variation tag 'opsz' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_opsz</p>
+<p>If a variable font has an 'opsz' (Optical Size) axis, then the coordinate of its 'Regular' instance is recommended to be a value in the range 10 to 16.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_opsz_axis</p>
+</span></li></ul></div></details>
+<h3>The variable font 'wght' (Weight) axis coordinate must be 700 on the 'Bold' instance.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/bold_wght_coord&gt;</div>
+<p>The Open-Type spec's registered design-variation tag 'wght' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wght does not specify a required value for the 'Bold' instance of a variable font.</p>
+<p>But Dave Crossland suggested that we should enforce a required value of 700 in this case (NOTE: a distinction is made between &quot;no bold instance present&quot; vs &quot;bold instance is present but its wght coordinate is not == 700&quot;).</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_wght_axis</p>
+</span></li></ul></div></details>
+<h3>The variable font 'wght' (Weight) axis coordinate must be within spec range of 1 to 1000 on all instances.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/wght_valid_range&gt;</div>
+<p>According to the Open-Type spec's registered design-variation tag 'wght' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wght</p>
+<p>On the 'wght' (Weight) axis, the valid coordinate range is 1-1000.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_wght_axis</p>
+</span></li></ul></div></details>
+<h3>The variable font 'wdth' (Width) axis coordinate must strictly greater than zero.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/wdth_valid_range&gt;</div>
+<p>According to the Open-Type spec's registered design-variation tag 'wdth' available at https://docs.microsoft.com/en-gb/typography/opentype/spec/dvaraxistag_wdth</p>
+<p>On the 'wdth' (Width) axis, the valid numeric range is strictly greater than zero.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_wdth_axis</p>
+</span></li></ul></div></details>
+<h3>The variable font 'slnt' (Slant) axis coordinate specifies positive values in its range? </h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/slnt_range&gt;</div>
+<p>The OpenType spec says at https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxistag_slnt that:</p>
+<p>[...] the scale for the Slant axis is interpreted as the angle of slant in counter-clockwise degrees from upright. This means that a typical, right-leaning oblique design will have a negative slant value. This matches the scale used for the italicAngle field in the post table.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font, has_slnt_axis</p>
+</span></li></ul></div></details>
+<h3>Validates that the value of axisNameID used by each VariationAxisRecord is greater than 255 and less than 32768.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/varfont/valid_axis_nameid&gt;</div>
+<p>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar</p>
+<p>The axisNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be used to refer to the axis in application user interfaces. The name ID must be greater than 255 and less than 32768.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h3>Validates that the value of subfamilyNameID used by each InstanceRecord is 2, 17, or greater than 255 and less than 32768.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/varfont/valid_subfamily_nameid&gt;</div>
+<p>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar</p>
+<p>The subfamilyNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be treated as equivalent to name ID 17 (typographic subfamily) strings for the given instance. Values of 2 or 17 can be used; otherwise, values must be greater than 255 and less than 32768.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h3>Validates that the value of postScriptNameID used by each InstanceRecord is 6, 0xFFFF, or greater than 255 and less than 32768.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/varfont/valid_postscript_nameid&gt;</div>
+<p>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar</p>
+<p>The postScriptNameID field provides a name ID that can be used to obtain strings from the 'name' table that can be treated as equivalent to name ID 6 (PostScript name) strings for the given instance. Values of 6 and 0xFFFF can be used; otherwise, values must be greater than 255 and less than 32768.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h3>Validates that when an instance record is included for the default instance, its subfamilyNameID value is set to a name ID whose string is equal to the string of either name ID 2 or 17, and its postScriptNameID value is set to a name ID whose string is equal to the string of name ID 6.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/varfont/valid_default_instance_nameids&gt;</div>
+<p>According to the 'fvar' documentation in OpenType spec v1.9.1 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar</p>
+<p>The default instance of a font is that instance for which the coordinate value of each axis is the defaultValue specified in the corresponding variation axis record. An instance record is not required for the default instance, though an instance record can be provided. When enumerating named instances, the default instance should be enumerated even if there is no corresponding instance record. If an instance record is included for the default instance (that is, an instance record has coordinates set to default values), then the nameID value should be set to either 2 or 17 or to a name ID with the same value as name ID 2 or 17. Also, if a postScriptNameID is included in instance records, and the postScriptNameID value should be set to 6 or to a name ID with the same value as name ID 6.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h3>Validates that all of the instance records in a given font have the same size.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/varfont/same_size_instance_records&gt;</div>
+<p>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar</p>
+<p>All of the instance records in a given font must be the same size, with all either including or omitting the postScriptNameID field. [...] If the value is 0xFFFF, then the value is ignored, and no PostScript name equivalent is provided for the instance.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h3>Validates that all of the instance records in a given font have distinct data.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/varfont/distinct_instance_records&gt;</div>
+<p>According to the 'fvar' documentation in OpenType spec v1.9 https://docs.microsoft.com/en-us/typography/opentype/spec/fvar</p>
+<p>All of the instance records in a font should have distinct coordinates and distinct subfamilyNameID and postScriptName ID values. If two or more records share the same coordinates, the same nameID values or the same postScriptNameID values, then all but the first can be ignored.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h3>Validate foundry-defined design-variation axis tag names.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/varfont/foundry_defined_tag_name&gt;</div>
+<p>According to the Open-Type spec's syntactic requirements for foundry-defined design-variation axis tags available at https://learn.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg</p>
+<p>Foundry-defined tags must begin with an uppercase letter and must use only uppercase letters or digits.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.stat&gt; ⏩⏩⏩⏩</h2>
+<h3>Ensure VFs have 'ital' STAT axis.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/italic_axis_in_stat&gt;</div>
+<p>Check that related Upright and Italic VFs have a 'ital' axis in STAT table.</p>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OK</p>
+</span></li></ul></div></details>
+<h3>All fvar axes have a correspondent Axis Record on STAT table?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/varfont/stat_axis_record_for_each_axis&gt;</div>
+<p>According to the OpenType spec, there must be an Axis Record for every axis defined in the fvar table.</p>
+<p>https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-records</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: is_variable_font</p>
+</span></li></ul></div></details>
+<h3>STAT table has Axis Value tables?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/stat_has_axis_value_tables&gt;</div>
+<p>According to the OpenType spec, in a variable font, it is strongly recommended that axis value tables be included for every element of typographic subfamily names for all of the named instances defined in the 'fvar' table.</p>
+<p>Axis value tables are particularly important for variable fonts, but can also be used in non-variable fonts. When used in non-variable fonts, axis value tables for particular values should be implemented consistently across fonts in the family.</p>
+<p>If present, Format 4 Axis Value tables are checked to ensure they have more than one AxisValueRecord (a strong recommendation from the OpenType spec).</p>
+<p>https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-value-tables</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: has_STAT_table</p>
+</span></li></ul></div></details>
+<h3>Ensure 'ital' STAT axis is boolean value</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/italic_axis_in_stat_is_boolean&gt;</div>
+<p>Check that the value of the 'ital' STAT axis is boolean (either 0 or 1), and elided for the Upright and not elided for the Italic, and that the Upright is linked to the Italic.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: has_STAT_table</p>
+</span></li></ul></div></details>
+<h3>Ensure 'ital' STAT axis is last.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/italic_axis_last&gt;</div>
+<p>Check that the 'ital' STAT axis is last in axis order.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Unfulfilled Conditions: has_STAT_table</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: fontbakery.profiles.layout&gt; </h2>
+<h3>Does the font have any invalid feature tags?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/layout_valid_feature_tags&gt;</div>
+<p>Incorrect tags can be indications of typos, leftover debugging code or questionable approaches, or user error in the font editor. Such typos can cause features and language support to fail to work as intended.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No invalid feature tags were found</p>
+</span></li></ul></div></details>
+<h3>Does the font have any invalid script tags?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/layout_valid_script_tags&gt;</div>
+<p>Incorrect script tags can be indications of typos, leftover debugging code or questionable approaches, or user error in the font editor. Such typos can cause features and language support to fail to work as intended.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No invalid script tags were found</p>
+</span></li></ul></div></details>
+<h3>Does the font have any invalid language tags?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/layout_valid_language_tags&gt;</div>
+<p>Incorrect language tags can be indications of typos, leftover debugging code or questionable approaches, or user error in the font editor. Such typos can cause features and language support to fail to work as intended.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No invalid language tags were found</p>
+</span></li></ul></div></details>
+<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️⚠️</h2>
+<h3>Are there any misaligned on-curve points?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_alignment_miss&gt;</div>
+<p>This check heuristically looks for on-curve points which are close to, but do not sit on, significant boundary coordinates. For example, a point which has a Y-coordinate of 1 or -1 might be a misplaced baseline point. As well as the baseline, here we also check for points near the x-height (but only for lowercase Latin letters), cap-height, ascender and descender Y coordinates.</p>
+<p>Not all such misaligned curve points are a mistake, and sometimes the design may call for points in locations near the boundaries. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported misalignments.</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have on-curve points which have potentially incorrect y coordinates:</p>
+<pre><code>* sterling (U+00A3): X=365.0,Y=730.0 (should be at cap-height 729?)
+
+* onequarter (U+00BC): X=42.0,Y=-1.0 (should be at baseline 0?)
+
+* onequarter (U+00BC): X=143.0,Y=-1.0 (should be at baseline 0?)
+
+* onehalf (U+00BD): X=42.0,Y=-1.0 (should be at baseline 0?)
+
+* onehalf (U+00BD): X=143.0,Y=-1.0 (should be at baseline 0?)
+
+* threequarters (U+00BE): X=208.0,Y=-1.0 (should be at baseline 0?)
+
+* threequarters (U+00BE): X=309.0,Y=-1.0 (should be at baseline 0?)
+
+* Oslash (U+00D8): X=52.0,Y=-1.0 (should be at baseline 0?)
+
+* Oslash (U+00D8): X=714.0,Y=728.0 (should be at cap-height 729?)
+
+* uni0123 (U+0123): X=326.0,Y=731.0 (should be at cap-height 729?) 
+
+* 54 more.
+</code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
+</span></li></ul></div></details>
+<h3>Are any segments inordinately short?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_short_segments&gt;</div>
+<p>This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).</p>
+<p>This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have segments which seem very short:</p>
+<pre><code>* dollar (U+0024) contains a short segment B&lt;&lt;361.0,441.0&gt;-&lt;369.0,439.0&gt;-&lt;378.0,437.0&gt;&gt;
+
+* dollar (U+0024) contains a short segment B&lt;&lt;378.0,437.0&gt;-&lt;387.0,435.0&gt;-&lt;396.0,433.0&gt;&gt;
+
+* less (U+003C) contains a short segment L&lt;&lt;212.0,345.0&gt;--&lt;212.0,335.0&gt;&gt;
+
+* greater (U+003E) contains a short segment L&lt;&lt;392.0,335.0&gt;--&lt;392.0,345.0&gt;&gt;
+
+* f (U+0066) contains a short segment L&lt;&lt;357.0,673.0&gt;--&lt;350.0,673.0&gt;&gt;
+
+* r (U+0072) contains a short segment L&lt;&lt;395.0,432.0&gt;--&lt;389.0,432.0&gt;&gt;
+
+* y (U+0079) contains a short segment L&lt;&lt;82.0,-45.0&gt;--&lt;90.0,-45.0&gt;&gt;
+
+* ordfeminine (U+00AA) contains a short segment B&lt;&lt;448.0,387.0&gt;-&lt;452.0,387.0&gt;-&lt;456.0,387.5&gt;&gt;
+
+* ordfeminine (U+00AA) contains a short segment B&lt;&lt;456.0,387.5&gt;-&lt;460.0,388.0&gt;-&lt;463.0,388.0&gt;&gt;
+
+* germandbls (U+00DF) contains a short segment L&lt;&lt;303.0,421.0&gt;--&lt;320.0,421.0&gt;&gt; 
+
+* 71 more.
+</code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]</p>
+</span></li></ul></div></details>
+<h3>Do any segments have colinear vectors?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_colinear_vectors&gt;</div>
+<p>This check looks for consecutive line segments which have the same angle. This normally happens if an outline point has been added by accident.</p>
+<p>This check is not run for variable fonts, as they may legitimately have colinear vectors.</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have colinear vectors:</p>
+<pre><code>* exclam (U+0021): L&lt;&lt;113.0,235.0&gt;--&lt;84.0,571.0&gt;&gt; -&gt; L&lt;&lt;84.0,571.0&gt;--&lt;84.0,729.0&gt;&gt;
+
+* exclam (U+0021): L&lt;&lt;241.0,729.0&gt;--&lt;241.0,571.0&gt;&gt; -&gt; L&lt;&lt;241.0,571.0&gt;--&lt;212.0,235.0&gt;&gt;
+
+* exclamdown (U+00A1): L&lt;&lt;113.0,341.0&gt;--&lt;84.0,5.0&gt;&gt; -&gt; L&lt;&lt;84.0,5.0&gt;--&lt;84.0,-153.0&gt;&gt;
+
+* exclamdown (U+00A1): L&lt;&lt;241.0,-153.0&gt;--&lt;241.0,5.0&gt;&gt; -&gt; L&lt;&lt;241.0,5.0&gt;--&lt;212.0,341.0&gt;&gt;
+
+* radical (U+221A): L&lt;&lt;304.0,412.0&gt;--&lt;304.0,412.0&gt;&gt; -&gt; L&lt;&lt;304.0,412.0&gt;--&lt;304.0,412.0&gt;&gt;
+
+* uni21BA (U+21BA): L&lt;&lt;501.0,544.0&gt;--&lt;503.0,519.0&gt;&gt; -&gt; L&lt;&lt;503.0,519.0&gt;--&lt;503.0,381.0&gt;&gt; 
+
+* uni21BB (U+21BB): L&lt;&lt;332.0,544.0&gt;--&lt;330.0,519.0&gt;&gt; -&gt; L&lt;&lt;330.0,519.0&gt;--&lt;330.0,381.0&gt;&gt; [code: found-colinear-vectors]
+</code></pre>
+</span></li></ul></div></details>
+<h3>Do outlines contain any jaggy segments?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_jaggy_segments&gt;</div>
+<p>This check heuristically detects outline segments which form a particularly small angle, indicative of an outline error. This may cause false positives in cases such as extreme ink traps, so should be regarded as advisory and backed up by manual inspection.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No jaggy segments found.</p>
+</span></li></ul></div></details>
+<h3>Do outlines contain any semi-vertical or semi-horizontal lines?</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_semi_vertical&gt;</div>
+<p>This check detects line segments which are nearly, but not quite, exactly horizontal or vertical. Sometimes such lines are created by design, but often they are indicative of a design error.</p>
+<p>This check is disabled for italic styles, which often contain nearly-upright lines.</p>
+
+<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have semi-vertical/semi-horizontal lines:</p>
+<pre><code>* M (U+004D): L&lt;&lt;722.0,0.0&gt;--&lt;725.0,576.0&gt;&gt;
+
+* arrowdown (U+2193): L&lt;&lt;395.0,192.0&gt;--&lt;394.0,729.0&gt;&gt;
+
+* arrowleft (U+2190): L&lt;&lt;266.0,291.0&gt;--&lt;816.0,292.0&gt;&gt;
+
+* arrowright (U+2192): L&lt;&lt;622.0,291.0&gt;--&lt;72.0,292.0&gt;&gt;
+
+* arrowup (U+2191): L&lt;&lt;395.0,537.0&gt;--&lt;394.0,0.0&gt;&gt;
+
+* franc (U+20A3): L&lt;&lt;108.0,729.0&gt;--&lt;558.0,728.0&gt;&gt;
+
+* uni03BC (U+03BC): L&lt;&lt;65.0,-167.0&gt;--&lt;67.0,576.0&gt;&gt;
+
+* uni21B9 (U+21B9): L&lt;&lt;377.0,584.0&gt;--&lt;979.0,583.0&gt;&gt;
+
+* uni21B9 (U+21B9): L&lt;&lt;710.0,145.0&gt;--&lt;108.0,146.0&gt;&gt;
+
+* uni2600 (U+2600): L&lt;&lt;189.0,334.0&gt;--&lt;56.0,333.0&gt;&gt;
+
+* uni2600 (U+2600): L&lt;&lt;653.0,395.0&gt;--&lt;786.0,396.0&gt;&gt; 
+
+* uni261E (U+261E): L&lt;&lt;907.0,426.0&gt;--&lt;508.0,427.0&gt;&gt; [code: found-semi-vertical]
+</code></pre>
+</span></li></ul></div></details>
+<h2>&lt;Section: Shaping Checks&gt; ⏩⏩⏩</h2>
+<h3>Check that texts shape as per expectation</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/shaping/regression&gt;</div>
+<p>Fonts with complex layout rules can benefit from regression tests to ensure that the rules are behaving as designed. This checks runs a shaping test suite and compares expected shaping against actual shaping, reporting any differences.</p>
+<p>Shaping test suites should be written by the font engineer and referenced in the fontbakery configuration file. For more information about write shaping test files and how to configure fontbakery to read the shaping test suites, see https://simoncozens.github.io/tdd-for-otl/</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Shaping test directory not defined in configuration file</p>
+</span></li></ul></div></details>
+<h3>Check that no forbidden glyphs are found while shaping</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/shaping/forbidden&gt;</div>
+<p>Fonts with complex layout rules can benefit from regression tests to ensure that the rules are behaving as designed. This checks runs a shaping test suite and reports if any glyphs are generated in the shaping which should not be produced. (For example, .notdef glyphs, visible viramas, etc.)</p>
+<p>Shaping test suites should be written by the font engineer and referenced in the Font Bakery configuration file. For more information about write shaping test files and how to configure fontbakery to read the shaping test suites, see https://simoncozens.github.io/tdd-for-otl/</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Shaping test directory not defined in configuration file</p>
+</span></li></ul></div></details>
+<h3>Check that no collisions are found while shaping</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/shaping/collides&gt;</div>
+<p>Fonts with complex layout rules can benefit from regression tests to ensure that the rules are behaving as designed. This checks runs a shaping test suite and reports instances where the glyphs collide in unexpected ways.</p>
+<p>Shaping test suites should be written by the font engineer and referenced in the fontbakery configuration file. For more information about write shaping test files and how to configure fontbakery to read the shaping test suites, see https://simoncozens.github.io/tdd-for-otl/</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Bold.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Shaping test directory not defined in configuration file</p>
+</span></li></ul></div></details>
+                    </body>
+                </html>
