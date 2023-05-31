@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>4</td>
+                <td>3</td>
                 <td>5</td>
                 <td>25</td>
                 <td>2</td>
-                <td>69</td>
+                <td>70</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>4%</td>
+                <td>3%</td>
                 <td>5%</td>
                 <td>24%</td>
                 <td>2%</td>
-                <td>66%</td>
+                <td>67%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥🔥⚠️⚠️⚠️⚠️⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⚠️⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -105,7 +105,7 @@
 <h3>Name table records must not have trailing spaces.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/trailing_spaces&gt;</div>
 
-<details><summary>🔥 <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>Name table record with key = (3, 1, 1033, 256) has trailing spaces that must be removed: 'Name: ' [code: trailing-space]</p>
+<details><summary>✅ <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No trailing spaces on name table entries.</p>
 </span></li></ul></div></details>
 <h3>Checking OS/2 usWinAscent & usWinDescent.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/win_ascent_and_descent&gt;</div>
@@ -378,10 +378,10 @@ or inverted outline direction:</p>
 <p>When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.</p>
 <p>Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.</p>
 
-<details><summary>⚠️ <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'uni0308': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1691a1390&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1691a17b0&gt;.</p>
-<pre><code>- Contour 0 start point differs in glyph 'bracketright.ss02' between location &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1691a1390&gt; and location &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1691a17b0&gt; 
+<details><summary>⚠️ <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'uni25CC': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0&gt;, [11, 1, 2, 4, 3, 5, 6, 7, 8, 9, 0, 10] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10&gt;.</p>
+<pre><code>- Contour order differs in glyph 'uni0308': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10&gt;. 
 
-- Contour order differs in glyph 'uni25CC': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1691a1390&gt;, [11, 1, 2, 4, 3, 5, 6, 7, 8, 9, 0, 10] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1691a17b0&gt;. [code: interpolation-issues]
+- Contour 0 start point differs in glyph 'bracketright.ss02' between location &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0&gt; and location &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10&gt; [code: interpolation-issues]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Check math signs have the same width.</h3>
@@ -908,7 +908,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * aring (U+00E5): X=391.0,Y=730.0 (should be at cap-height 729?) 
 
-* 69 more.
+* 57 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>

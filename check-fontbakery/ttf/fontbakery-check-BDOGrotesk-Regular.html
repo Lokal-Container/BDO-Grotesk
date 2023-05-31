@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>3</td>
-                <td>8</td>
+                <td>2</td>
+                <td>7</td>
                 <td>34</td>
                 <td>2</td>
-                <td>58</td>
+                <td>60</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>3%</td>
-                <td>8%</td>
+                <td>2%</td>
+                <td>7%</td>
                 <td>32%</td>
                 <td>2%</td>
-                <td>55%</td>
+                <td>57%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥🔥⚠️⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -105,7 +105,7 @@
 <h3>Name table records must not have trailing spaces.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/trailing_spaces&gt;</div>
 
-<details><summary>🔥 <strong>fonts/ttf/BDOGrotesk-Regular.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>Name table record with key = (3, 1, 1033, 256) has trailing spaces that must be removed: 'Name: ' [code: trailing-space]</p>
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Regular.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No trailing spaces on name table entries.</p>
 </span></li></ul></div></details>
 <h3>Checking OS/2 usWinAscent & usWinDescent.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/win_ascent_and_descent&gt;</div>
@@ -314,7 +314,7 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 
 - Glyph name: ohorn	Contours detected: 3	Expected: 2 
 
-- 52 more.
+- 76 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists.
 [code: contour-count]</p>
@@ -923,7 +923,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 <details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Regular.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No invalid language tags were found</p>
 </span></li></ul></div></details>
-<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️⚠️</h2>
+<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️</h2>
 <h3>Are there any misaligned on-curve points?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_alignment_miss&gt;</div>
 <p>This check heuristically looks for on-curve points which are close to, but do not sit on, significant boundary coordinates. For example, a point which has a Y-coordinate of 1 or -1 might be a misplaced baseline point. As well as the baseline, here we also check for points near the x-height (but only for lowercase Latin letters), cap-height, ascender and descender Y coordinates.</p>
@@ -950,7 +950,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * aring (U+00E5): X=391.0,Y=730.0 (should be at cap-height 729?) 
 
-* 73 more.
+* 61 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>
@@ -959,30 +959,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <p>This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).</p>
 <p>This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.</p>
 
-<details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Regular.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have segments which seem very short:</p>
-<pre><code>* dollar (U+0024) contains a short segment L&lt;&lt;353.0,419.0&gt;--&lt;358.0,418.0&gt;&gt;
-
-* less (U+003C) contains a short segment L&lt;&lt;169.0,350.0&gt;--&lt;169.0,342.0&gt;&gt;
-
-* greater (U+003E) contains a short segment L&lt;&lt;439.0,342.0&gt;--&lt;439.0,350.0&gt;&gt;
-
-* a (U+0061) contains a short segment B&lt;&lt;551.0,71.0&gt;-&lt;559.0,71.0&gt;-&lt;563.0,71.5&gt;&gt;
-
-* a (U+0061) contains a short segment B&lt;&lt;563.0,71.5&gt;-&lt;567.0,72.0&gt;-&lt;568.0,73.0&gt;&gt;
-
-* f (U+0066) contains a short segment L&lt;&lt;305.0,702.0&gt;--&lt;299.0,702.0&gt;&gt;
-
-* r (U+0072) contains a short segment L&lt;&lt;351.0,466.0&gt;--&lt;344.0,466.0&gt;&gt;
-
-* y (U+0079) contains a short segment L&lt;&lt;52.0,-81.0&gt;--&lt;60.0,-81.0&gt;&gt;
-
-* ordfeminine (U+00AA) contains a short segment B&lt;&lt;419.0,370.0&gt;-&lt;424.0,370.0&gt;-&lt;427.5,370.5&gt;&gt;
-
-* ordfeminine (U+00AA) contains a short segment B&lt;&lt;427.5,370.5&gt;-&lt;431.0,371.0&gt;-&lt;435.0,371.0&gt;&gt; 
-
-* 87 more.
-</code></pre>
-<p>Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]</p>
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Regular.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>So many short segments were found that this was probably by design.</p>
 </span></li></ul></div></details>
 <h3>Do any segments have colinear vectors?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_colinear_vectors&gt;</div>

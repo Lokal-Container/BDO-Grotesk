@@ -25,6 +25,13 @@ check-otf: $(OTFDIR)
 		fontbakery check-universal -l DEBUG --html $(CHECKS)/otf/fontbakery-check-$$filename.html --ghmarkdown $(CHECKS)/otf/fontbakery-check-$$filename.md $$file; \
 	done
 
+fix-fonts:
+	gftools gen-stat $(VARDIR)/*.ttf
+	for file in $(VARDIR)/*.ttf.fix; do \
+		mv $$file $${file%.fix}; \
+	done
+	
+	
 check-variable: $(VARDIR)
 	mkdir -p $(CHECKS)/variable;
 	for file in $(VARDIR)/*.ttf; do \

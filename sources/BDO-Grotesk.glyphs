@@ -42,12 +42,8 @@ name = "Use Extension Kerning";
 value = 1;
 },
 {
-name = "Variable Font Origin";
-value = "47995495-C855-4C5A-BA32-118EA0334940";
-},
-{
 name = vendorID;
-value = LC;
+value = LCT;
 },
 {
 name = license;
@@ -586,7 +582,7 @@ sub oslashacute by oslashacute.ss07;
 sub otilde by otilde.ss07;
 ";
 name = ss07;
-notes = "Name: Name: ";
+notes = "Name: Name:";
 }
 );
 fontMaster = (
@@ -1492,7 +1488,7 @@ transform = "{1, 0, 0, 1, 162, 68}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -1598,7 +1594,7 @@ transform = "{1, 0, 0, 1, 162, 166}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -1786,7 +1782,7 @@ transform = "{1, 0, 0, 1, 174, 68}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -1833,7 +1829,7 @@ transform = "{1, 0, 0, 1, 273, 0}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -1880,7 +1876,7 @@ transform = "{1, 0, 0, 1, 202, 68}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -1927,7 +1923,7 @@ transform = "{1, 0, 0, 1, 77, 166}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -1974,7 +1970,7 @@ transform = "{1, 0, 0, 1, 195, 68}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -2021,7 +2017,7 @@ transform = "{1, 0, 0, 1, 509, 0}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -2068,7 +2064,7 @@ transform = "{1, 0, 0, 1, 224, 68}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -2115,7 +2111,7 @@ transform = "{1, 0, 0, 1, 186, 68}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
-width = 738;
+width = 739;
 }
 );
 leftKerningGroup = KO_A;
@@ -30093,7 +30089,7 @@ name = t;
 },
 {
 name = caroncomb.alt.t;
-transform = "{1, 0, 0, 1, 206, 0}";
+transform = "{1, 0, 0, 1, 208, 0}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -34344,7 +34340,7 @@ name = t.ss01;
 },
 {
 name = caroncomb.alt.t;
-transform = "{1, 0, 0, 1, 206, 0}";
+transform = "{1, 0, 0, 1, 208, 0}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -34813,11 +34809,11 @@ name = a.ss03;
 },
 {
 name = dotbelowcomb;
-transform = "{1, 0, 0, 1, 432, 0}";
+transform = "{1, 0, 0, 1, 206, 0}";
 },
 {
 name = brevecomb;
-transform = "{1, 0, 0, 1, 113, 2}";
+transform = "{1, 0, 0, 1, 113, 0}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -35385,7 +35381,7 @@ name = a.ss03;
 },
 {
 name = dotbelowcomb;
-transform = "{1, 0, 0, 1, 432, 0}";
+transform = "{1, 0, 0, 1, 206, 0}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -35569,6 +35565,7 @@ name = a.ss03;
 },
 {
 name = ogonekcomb;
+transform = "{1, 0, 0, 1, 363, 0}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -112510,7 +112507,7 @@ name = circumflexcomb.viet;
 },
 {
 name = acutecomb.viet;
-transform = "{1, 0, 0, 1, 221, 77}";
+transform = "{1, 0, 0, 1, 105, 100}";
 }
 );
 layerId = "F114AD5B-DC62-4E73-AD12-1938E40AC8EF";
@@ -112558,7 +112555,7 @@ name = circumflexcomb.viet;
 },
 {
 name = acutecomb.viet;
-transform = "{1, 0, 0, 1, 324, 50}";
+transform = "{1, 0, 0, 1, 140, 146}";
 }
 );
 layerId = "E787E54A-EE3E-475A-BF02-8501A6DA5144";
@@ -112606,7 +112603,7 @@ name = circumflexcomb.viet;
 },
 {
 name = acutecomb.viet;
-transform = "{1, 0, 0, 1, 304, 71}";
+transform = "{1, 0, 0, 1, 152, 99}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -112665,7 +112662,7 @@ name = circumflexcomb.viet;
 },
 {
 name = gravecomb.viet;
-transform = "{1, 0, 0, 1, 133, 77}";
+transform = "{1, 0, 0, 1, 23, 100}";
 }
 );
 layerId = "F114AD5B-DC62-4E73-AD12-1938E40AC8EF";
@@ -112713,7 +112710,7 @@ name = circumflexcomb.viet;
 },
 {
 name = gravecomb.viet;
-transform = "{1, 0, 0, 1, 288, 50}";
+transform = "{1, 0, 0, 1, 26, 146}";
 }
 );
 layerId = "E787E54A-EE3E-475A-BF02-8501A6DA5144";
@@ -112761,7 +112758,7 @@ name = circumflexcomb.viet;
 },
 {
 name = gravecomb.viet;
-transform = "{1, 0, 0, 1, 206, 71}";
+transform = "{1, 0, 0, 1, 58, 99}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -116740,6 +116737,14 @@ value = 54;
 {
 name = Autohint;
 value = 1;
+},
+{
+name = preferredFamilyName;
+value = "BDO Grotesk";
+},
+{
+name = preferredSubfamilyName;
+value = Light;
 }
 );
 interpolationWeight = 200;
@@ -116762,6 +116767,14 @@ value = 60;
 {
 name = Autohint;
 value = 1;
+},
+{
+name = preferredFamilyName;
+value = "BDO Grotesk";
+},
+{
+name = preferredSubfamilyName;
+value = Regular;
 }
 );
 interpolationWeight = 400;
@@ -116783,6 +116796,14 @@ value = 80;
 {
 name = Autohint;
 value = 1;
+},
+{
+name = preferredFamilyName;
+value = "BDO Grotesk";
+},
+{
+name = preferredSubfamilyName;
+value = Medium;
 }
 );
 interpolationWeight = 480;
@@ -116806,6 +116827,14 @@ value = 90;
 {
 name = Autohint;
 value = 1;
+},
+{
+name = preferredFamilyName;
+value = "BDO Grotesk";
+},
+{
+name = preferredSubfamilyName;
+value = DemiBold;
 }
 );
 interpolationWeight = 600;
@@ -116829,6 +116858,14 @@ value = 100;
 {
 name = Autohint;
 value = 1;
+},
+{
+name = preferredFamilyName;
+value = "BDO Grotesk";
+},
+{
+name = preferredSubfamilyName;
+value = Bold;
 }
 );
 interpolationWeight = 700;
@@ -116837,6 +116874,7 @@ instanceInterpolations = {
 "E787E54A-EE3E-475A-BF02-8501A6DA5144" = 0.6;
 };
 isBold = 1;
+linkStyle = Regular;
 name = Bold;
 weightClass = Bold;
 },
@@ -116853,6 +116891,14 @@ value = 110;
 {
 name = Autohint;
 value = 1;
+},
+{
+name = preferredFamilyName;
+value = "BDO Grotesk";
+},
+{
+name = preferredSubfamilyName;
+value = ExtraBold;
 }
 );
 interpolationWeight = 800;
@@ -116876,6 +116922,14 @@ value = 120;
 {
 name = Autohint;
 value = 1;
+},
+{
+name = preferredFamilyName;
+value = "BDO Grotesk";
+},
+{
+name = preferredSubfamilyName;
+value = Black;
 }
 );
 interpolationWeight = 900;

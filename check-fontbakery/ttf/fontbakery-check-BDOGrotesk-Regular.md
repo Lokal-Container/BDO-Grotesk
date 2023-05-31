@@ -60,11 +60,7 @@ Fontbakery version: 0.8.11
 >Check that related Upright and Italic VFs have a 'ital' axis in STAT table.
 >
 * 🍞 **PASS** OK
-</div></details><br></div></details><details><summary><b>[95] BDOGrotesk-Regular.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Name table records must not have trailing spaces. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/name/trailing_spaces">com.google.fonts/check/name/trailing_spaces</a>)</summary><div>
-
-
-* 🔥 **FAIL** Name table record with key = (3, 1, 1033, 256) has trailing spaces that must be removed: 'Name: ' [code: trailing-space]
-</div></details><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[95] BDOGrotesk-Regular.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
 
 >
 >Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
@@ -202,7 +198,7 @@ The following glyphs do not have the recommended number of contours:
 
 	- Glyph name: ohorn	Contours detected: 3	Expected: 2 
 
-	- 52 more.
+	- 76 more.
 
 Use -F or --full-lists to disable shortening of long lists.
  [code: contour-count]
@@ -275,41 +271,9 @@ notequal
 
 	* aring (U+00E5): X=391.0,Y=730.0 (should be at cap-height 729?) 
 
-	* 73 more.
+	* 61 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
-</div></details><details><summary>⚠ <b>WARN:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
-
->
->This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).
->
->This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.
->
-* ⚠ **WARN** The following glyphs have segments which seem very short:
-
-	* dollar (U+0024) contains a short segment L<<353.0,419.0>--<358.0,418.0>>
-
-	* less (U+003C) contains a short segment L<<169.0,350.0>--<169.0,342.0>>
-
-	* greater (U+003E) contains a short segment L<<439.0,342.0>--<439.0,350.0>>
-
-	* a (U+0061) contains a short segment B<<551.0,71.0>-<559.0,71.0>-<563.0,71.5>>
-
-	* a (U+0061) contains a short segment B<<563.0,71.5>-<567.0,72.0>-<568.0,73.0>>
-
-	* f (U+0066) contains a short segment L<<305.0,702.0>--<299.0,702.0>>
-
-	* r (U+0072) contains a short segment L<<351.0,466.0>--<344.0,466.0>>
-
-	* y (U+0079) contains a short segment L<<52.0,-81.0>--<60.0,-81.0>>
-
-	* ordfeminine (U+00AA) contains a short segment B<<419.0,370.0>-<424.0,370.0>-<427.5,370.5>>
-
-	* ordfeminine (U+00AA) contains a short segment B<<427.5,370.5>-<431.0,371.0>-<435.0,371.0>> 
-
-	* 87 more.
-
-Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]
 </div></details><details><summary>⚠ <b>WARN:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
 
 >
@@ -670,6 +634,10 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Only the fontfiles in these directories will be considered in superfamily-level checks.
 >
 * ℹ **INFO** fonts/ttf [code: family-path]
+</div></details><details><summary>🍞 <b>PASS:</b> Name table records must not have trailing spaces. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/name/trailing_spaces">com.google.fonts/check/name/trailing_spaces</a>)</summary><div>
+
+
+* 🍞 **PASS** No trailing spaces on name table entries.
 </div></details><details><summary>🍞 <b>PASS:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 >
@@ -1046,6 +1014,14 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Incorrect language tags can be indications of typos, leftover debugging code or questionable approaches, or user error in the font editor. Such typos can cause features and language support to fail to work as intended.
 >
 * 🍞 **PASS** No invalid language tags were found
+</div></details><details><summary>🍞 <b>PASS:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
+
+>
+>This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).
+>
+>This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.
+>
+* 🍞 **PASS** So many short segments were found that this was probably by design.
 </div></details><details><summary>🍞 <b>PASS:</b> Do outlines contain any jaggy segments? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_jaggy_segments">com.google.fonts/check/outline_jaggy_segments</a>)</summary><div>
 
 >
@@ -1058,5 +1034,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 3 | 8 | 34 | 2 | 58 | 0 |
-| 0% | 3% | 8% | 32% | 2% | 55% | 0% |
+| 0 | 2 | 7 | 34 | 2 | 60 | 0 |
+| 0% | 2% | 7% | 32% | 2% | 57% | 0% |
