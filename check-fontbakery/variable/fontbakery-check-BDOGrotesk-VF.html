@@ -73,19 +73,19 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>3</td>
+                <td>2</td>
                 <td>5</td>
                 <td>25</td>
                 <td>2</td>
-                <td>70</td>
+                <td>71</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>3%</td>
+                <td>2%</td>
                 <td>5%</td>
                 <td>24%</td>
                 <td>2%</td>
-                <td>67%</td>
+                <td>68%</td>
             </tr>
             </table>
             
@@ -378,10 +378,10 @@ or inverted outline direction:</p>
 <p>When creating a variable font, the designer must make sure that corresponding paths have the same start points across masters, as well as that corresponding component shapes are placed in the same order within a glyph across masters. If this is not done, the glyph will not interpolate correctly.</p>
 <p>Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.</p>
 
-<details><summary>⚠️ <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour order differs in glyph 'uni25CC': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0&gt;, [11, 1, 2, 4, 3, 5, 6, 7, 8, 9, 0, 10] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10&gt;.</p>
-<pre><code>- Contour order differs in glyph 'uni0308': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10&gt;. 
+<details><summary>⚠️ <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>Interpolation issues were found in the font: 	- Contour 0 start point differs in glyph 'bracketright.ss02' between location &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e1de0&gt; and location &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e2c20&gt;</p>
+<pre><code>- Contour order differs in glyph 'uni0308': [0, 1] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e1de0&gt;, [1, 0] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e2c20&gt;. 
 
-- Contour 0 start point differs in glyph 'bracketright.ss02' between location &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0&gt; and location &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10&gt; [code: interpolation-issues]
+- Contour order differs in glyph 'uni25CC': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e1de0&gt;, [11, 1, 2, 4, 3, 5, 6, 7, 8, 9, 0, 10] in &lt;fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e2c20&gt;. [code: interpolation-issues]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Check math signs have the same width.</h3>
@@ -404,7 +404,7 @@ plusminus</p>
 <p>Width = 631:
 multiply</p>
 <p>Width = 609:
-lessequal, divide</p>
+divide, lessequal</p>
 <p>Width = 604:
 minus</p>
 <p>Width = 638:
@@ -827,7 +827,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 <details><summary>✅ <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Axis tag 'wght' looks good.</p>
 </span></li></ul></div></details>
-<h2>&lt;Section: fontbakery.profiles.stat&gt; 🔥⏩⏩</h2>
+<h2>&lt;Section: fontbakery.profiles.stat&gt; ⏩⏩</h2>
 <h3>Ensure VFs have 'ital' STAT axis.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/italic_axis_in_stat&gt;</div>
 <p>Check that related Upright and Italic VFs have a 'ital' axis in STAT table.</p>
@@ -848,7 +848,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <p>If present, Format 4 Axis Value tables are checked to ensure they have more than one AxisValueRecord (a strong recommendation from the OpenType spec).</p>
 <p>https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-value-tables</p>
 
-<details><summary>🔥 <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>STAT table has no Axis Value tables. [code: no-axis-value-tables]</p>
+<details><summary>✅ <strong>fonts/variable/BDOGrotesk-VF.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>STAT table has Axis Value tables.</p>
 </span></li></ul></div></details>
 <h3>Ensure 'ital' STAT axis is boolean value</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/italic_axis_in_stat_is_boolean&gt;</div>

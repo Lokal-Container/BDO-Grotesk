@@ -219,7 +219,7 @@ Width = 609:
 equal
 
 Width = 602:
-minus, logicalnot
+logicalnot, minus
 
 Width = 608:
 plusminus
@@ -228,7 +228,7 @@ Width = 612:
 multiply
 
 Width = 604:
-lessequal, divide
+divide, lessequal
 
 Width = 615:
 approxequal

@@ -216,7 +216,7 @@ Width = 601:
 plus
 
 Width = 613:
-equal, plusminus
+plusminus, equal
 
 Width = 604:
 greater

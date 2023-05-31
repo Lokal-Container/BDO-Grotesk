@@ -113,18 +113,6 @@ or inverted outline direction:
 * 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
 The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]
-</div></details><details><summary>🔥 <b>FAIL:</b> STAT table has Axis Value tables? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.adobe.fonts/check/stat_has_axis_value_tables">com.adobe.fonts/check/stat_has_axis_value_tables</a>)</summary><div>
-
->
->According to the OpenType spec, in a variable font, it is strongly recommended that axis value tables be included for every element of typographic subfamily names for all of the named instances defined in the 'fvar' table.
->
->Axis value tables are particularly important for variable fonts, but can also be used in non-variable fonts. When used in non-variable fonts, axis value tables for particular values should be implemented consistently across fonts in the family.
->
->If present, Format 4 Axis Value tables are checked to ensure they have more than one AxisValueRecord (a strong recommendation from the OpenType spec).
->
->https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-value-tables
->
-* 🔥 **FAIL** STAT table has no Axis Value tables. [code: no-axis-value-tables]
 </div></details><details><summary>⚠ <b>WARN:</b> Glyph names are all valid? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/valid_glyphnames">com.google.fonts/check/valid_glyphnames</a>)</summary><div>
 
 >
@@ -162,11 +150,11 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 >
 >Here we check for the presence of potential interpolation errors using the fontTools.varLib.interpolatable module.
 >
-* ⚠ **WARN** Interpolation issues were found in the font: 	- Contour order differs in glyph 'uni25CC': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0>, [11, 1, 2, 4, 3, 5, 6, 7, 8, 9, 0, 10] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10>.
+* ⚠ **WARN** Interpolation issues were found in the font: 	- Contour 0 start point differs in glyph 'bracketright.ss02' between location <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e1de0> and location <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e2c20>
 
-	- Contour order differs in glyph 'uni0308': [0, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0>, [1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10>. 
+	- Contour order differs in glyph 'uni0308': [0, 1] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e1de0>, [1, 0] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e2c20>. 
 
-	- Contour 0 start point differs in glyph 'bracketright.ss02' between location <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135955bd0> and location <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x135956a10> [code: interpolation-issues]
+	- Contour order differs in glyph 'uni25CC': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e1de0>, [11, 1, 2, 4, 3, 5, 6, 7, 8, 9, 0, 10] in <fontTools.ttLib.ttGlyphSet._TTGlyphSetGlyf object at 0x1467e2c20>. [code: interpolation-issues]
 </div></details><details><summary>⚠ <b>WARN:</b> Check math signs have the same width. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/math_signs_width">com.google.fonts/check/math_signs_width</a>)</summary><div>
 
 >
@@ -196,7 +184,7 @@ Width = 631:
 multiply
 
 Width = 609:
-lessequal, divide
+divide, lessequal
 
 Width = 604:
 minus
@@ -923,6 +911,18 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-records
 >
 * 🍞 **PASS** STAT table has all necessary Axis Records.
+</div></details><details><summary>🍞 <b>PASS:</b> STAT table has Axis Value tables? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.adobe.fonts/check/stat_has_axis_value_tables">com.adobe.fonts/check/stat_has_axis_value_tables</a>)</summary><div>
+
+>
+>According to the OpenType spec, in a variable font, it is strongly recommended that axis value tables be included for every element of typographic subfamily names for all of the named instances defined in the 'fvar' table.
+>
+>Axis value tables are particularly important for variable fonts, but can also be used in non-variable fonts. When used in non-variable fonts, axis value tables for particular values should be implemented consistently across fonts in the family.
+>
+>If present, Format 4 Axis Value tables are checked to ensure they have more than one AxisValueRecord (a strong recommendation from the OpenType spec).
+>
+>https://docs.microsoft.com/en-us/typography/opentype/spec/stat#axis-value-tables
+>
+* 🍞 **PASS** STAT table has Axis Value tables.
 </div></details><details><summary>🍞 <b>PASS:</b> Does the font have any invalid feature tags? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/layout.html#com.google.fonts/check/layout_valid_feature_tags">com.google.fonts/check/layout_valid_feature_tags</a>)</summary><div>
 
 >
@@ -947,5 +947,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 3 | 5 | 25 | 2 | 70 | 0 |
-| 0% | 3% | 5% | 24% | 2% | 67% | 0% |
+| 0 | 2 | 5 | 25 | 2 | 71 | 0 |
+| 0% | 2% | 5% | 24% | 2% | 68% | 0% |

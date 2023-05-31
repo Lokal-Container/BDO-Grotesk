@@ -136,10 +136,10 @@ Width = 600:
 plus
 
 Width = 604:
-equal, plusminus
+plusminus, equal
 
 Width = 601:
-minus, logicalnot, greater
+greater, logicalnot, minus
 
 Width = 606:
 multiply

@@ -151,7 +151,7 @@ Width = 631:
 multiply
 
 Width = 609:
-divide, lessequal
+lessequal, divide
 
 Width = 604:
 minus
