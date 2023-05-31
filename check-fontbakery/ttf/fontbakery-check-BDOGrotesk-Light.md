@@ -60,7 +60,11 @@ Fontbakery version: 0.8.11
 >This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.
 >
 * 💤 **SKIP** Unfulfilled Conditions: RIBBI_ttFonts
-</div></details><br></div></details><details><summary><b>[95] BDOGrotesk-Light.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[95] BDOGrotesk-Light.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Name table records must not have trailing spaces. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/name/trailing_spaces">com.google.fonts/check/name/trailing_spaces</a>)</summary><div>
+
+
+* 🔥 **FAIL** Name table record with key = (3, 1, 1033, 256) has trailing spaces that must be removed: 'Name: ' [code: trailing-space]
+</div></details><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
 
 >
 >Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
@@ -78,6 +82,9 @@ Fontbakery version: 0.8.11
 * 🔥 **FAIL** The following glyphs had components with scaling or rotation
 or inverted outline direction:
 
+* uni27E9 (component uni27E8)
+* uni27EB (component uni27EA)
+* uni27ED (component uni27EC)
 * exclamdown (component exclam)
 * backslash (component slash)
 * backslash.ss02 (component slash.ss02)
@@ -85,19 +92,20 @@ or inverted outline direction:
 * uni2E29 (component uni2E28)
 * braceright.case (component braceleft.case)
 * uni3011.case (component uni3010.case)
-* uni27E9 (component uni27E8)
-* uni27EB (component uni27EA)
-* uni27ED (component uni27EC)
 * arrowdown (component arrowup)
 * arrowleft (component arrowright)
+* uni21A4 (component uni21A6)
 * uni21AA (component uni21A9)
+* uni21B1 (component uni21B0)
 * uni21B3 (component uni21B2)
 * uni21BB (component uni21BA)
 * uni21CA (component uni21C8)
+* uni2198.ss04 (component uni2197.ss04)
 * arrowdown.ss04 (component arrowup.ss04)
+* uni2196.ss04 (component uni2197.ss04)
 * uni25A8 (component uni25A7)
-* uni232B (component uni2326)
-* less_hyphen_hyphen.dlig (component arrowright)
+* uni25C0 (component uni25B6)
+* uni25C1 (component uni25B7)
  [code: transformed-components]
 </div></details><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
@@ -106,9 +114,9 @@ or inverted outline direction:
 >
 >Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
 >
-* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į̂ į̄ į̌
+* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
-The dot of soft dotted characters should disappear in other cases, for example: ĭ̦ i̦̇ i̦̊ i̦̋ i̦̒ j̦̀ j̦̄ j̦̆ j̦̇ j̦̈ j̦̊ j̦̋ ǰ̦ j̦̒ į̆ į̇ į̈ į̊ į̋ į̒ [code: soft-dotted]
+The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]
 </div></details><details><summary>⚠ <b>WARN:</b> Glyph names are all valid? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/valid_glyphnames">com.google.fonts/check/valid_glyphnames</a>)</summary><div>
 
 >
@@ -155,9 +163,9 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 
 	- aring.BRACKET.varAlt01
 
-	- arrowdown.ss04 
+	- atilde.BRACKET.varAlt01 
 
-	- 4 more.
+	- 15 more.
 
 Use -F or --full-lists to disable shortening of long lists.
  [code: unreachable-glyphs]
@@ -192,22 +200,12 @@ The following glyphs do not have the recommended number of contours:
 
 	- Glyph name: uogonek	Contours detected: 2	Expected: 1
 
-	- Glyph name: uni21B9	Contours detected: 2	Expected: 4 
+	- Glyph name: ohorn	Contours detected: 3	Expected: 2 
 
-	- 18 more.
+	- 52 more.
 
 Use -F or --full-lists to disable shortening of long lists.
  [code: contour-count]
-</div></details><details><summary>⚠ <b>WARN:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
-
->
->The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
->
->For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
->
->Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
->
-* ⚠ **WARN** No dotted circle glyph present [code: missing-dotted-circle]
 </div></details><details><summary>⚠ <b>WARN:</b> Are there any misaligned on-curve points? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_alignment_miss">com.google.fonts/check/outline_alignment_miss</a>)</summary><div>
 
 >
@@ -216,6 +214,10 @@ Use -F or --full-lists to disable shortening of long lists.
 >Not all such misaligned curve points are a mistake, and sometimes the design may call for points in locations near the boundaries. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported misalignments.
 >
 * ⚠ **WARN** The following glyphs have on-curve points which have potentially incorrect y coordinates:
+
+	* percent (U+0025): X=678.0,Y=730.0 (should be at cap-height 729?)
+
+	* percent (U+0025): X=748.0,Y=730.0 (should be at cap-height 729?)
 
 	* r (U+0072): X=311.0,Y=556.0 (should be at x-height 557?)
 
@@ -231,13 +233,9 @@ Use -F or --full-lists to disable shortening of long lists.
 
 	* tbar (U+0167): X=170.0,Y=730.0 (should be at cap-height 729?)
 
-	* florin (U+0192): X=417.0,Y=728.0 (should be at cap-height 729?)
+	* florin (U+0192): X=417.0,Y=728.0 (should be at cap-height 729?) 
 
-	* Oslashacute (U+01FE): X=104.0,Y=1.0 (should be at baseline 0?)
-
-	* Oslashacute (U+01FE): X=642.0,Y=730.0 (should be at cap-height 729?) 
-
-	* 65 more.
+	* 29 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
 </div></details><details><summary>⚠ <b>WARN:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
@@ -269,7 +267,7 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 
 	* ae (U+00E6) contains a short segment B<<904.0,290.0>-<903.0,274.0>-<902.0,266.0>> 
 
-	* 84 more.
+	* 49 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]
 </div></details><details><summary>⚠ <b>WARN:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
@@ -305,13 +303,9 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-short-s
 >
 * ⚠ **WARN** The following glyphs have jaggy segments:
 
-	* braceleft (U+007B): B<<229.5,371.0>-<211.0,335.0>-<176.0,332.0>>/B<<176.0,332.0>-<211.0,329.0>-<229.5,293.0>> = 9.79818490757551
+	* braceleft (U+007B): B<<229.5,371.0>-<211.0,335.0>-<176.0,332.0>>/B<<176.0,332.0>-<211.0,329.0>-<229.5,293.0>> = 9.79818490757551 
 
-	* braceright (U+007D): B<<178.5,371.0>-<197.0,335.0>-<232.0,332.0>>/B<<232.0,332.0>-<197.0,329.0>-<178.5,293.0>> = 9.79818490757551
-
-	* uni270F (U+270F): B<<779.5,221.5>-<770.0,175.0>-<747.0,134.0>>/B<<747.0,134.0>-<754.0,142.0>-<774.5,158.0>> = 11.89456299472543 
-
-	* uni270F (U+270F): B<<834.0,441.0>-<763.0,488.0>-<747.0,506.0>>/B<<747.0,506.0>-<770.0,466.0>-<779.5,419.5>> = 11.734637497955664 [code: found-jaggy-segments]
+	* braceright (U+007D): B<<178.5,371.0>-<197.0,335.0>-<232.0,332.0>>/B<<232.0,332.0>-<197.0,329.0>-<178.5,293.0>> = 9.79818490757551 [code: found-jaggy-segments]
 </div></details><details><summary>⚠ <b>WARN:</b> Do outlines contain any semi-vertical or semi-horizontal lines? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_semi_vertical">com.google.fonts/check/outline_semi_vertical</a>)</summary><div>
 
 >
@@ -329,13 +323,13 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-short-s
 
 	* summation (U+2211): L<<523.0,676.0>--<122.0,675.0>>
 
-	* uni20BA (U+20BA): L<<587.0,329.0>--<586.0,149.0>>
+	* uni20B1 (U+20B1): L<<464.0,267.0>--<201.0,268.0>>
 
-	* uni2600 (U+2600): L<<68.0,382.0>--<213.0,383.0>>
+	* uni20B1 (U+20B1): L<<613.0,407.0>--<201.0,408.0>>
 
-	* uni2600 (U+2600): L<<798.0,347.0>--<653.0,346.0>> 
+	* uni20B1 (U+20B1): L<<630.0,527.0>--<201.0,528.0>> 
 
-	* uni261E (U+261E): L<<921.0,426.0>--<522.0,427.0>> [code: found-semi-vertical]
+	* uni20BA (U+20BA): L<<587.0,329.0>--<586.0,149.0>> [code: found-semi-vertical]
 </div></details><details><summary>💤 <b>SKIP:</b> Check correctness of STAT table strings  (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/STAT_strings">com.google.fonts/check/STAT_strings</a>)</summary><div>
 
 >
@@ -638,10 +632,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Only the fontfiles in these directories will be considered in superfamily-level checks.
 >
 * ℹ **INFO** fonts/ttf [code: family-path]
-</div></details><details><summary>🍞 <b>PASS:</b> Name table records must not have trailing spaces. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/name/trailing_spaces">com.google.fonts/check/name/trailing_spaces</a>)</summary><div>
-
-
-* 🍞 **PASS** No trailing spaces on name table entries.
 </div></details><details><summary>🍞 <b>PASS:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 >
@@ -729,6 +719,16 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >It is also mostly an obsolete mechanism now, and the character is typicaly only included in fonts for legacy codepage coverage.
 >
 * 🍞 **PASS** Looks good!
+</div></details><details><summary>🍞 <b>PASS:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
+
+>
+>The dotted circle character (U+25CC) is inserted by shaping engines before mark glyphs which do not have an associated base, especially in the context of broken syllabic clusters.
+>
+>For fonts containing combining marks, it is recommended that the dotted circle character be included so that these isolated marks can be displayed properly; for fonts supporting complex scripts, this should be considered mandatory.
+>
+>Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
+>
+* 🍞 **PASS** All marks were anchored to dotted circle
 </div></details><details><summary>🍞 <b>PASS:</b> Ensure no GPOS7 lookups are present. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/gpos7">com.google.fonts/check/gpos7</a>)</summary><div>
 
 >
@@ -1022,5 +1022,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 2 | 9 | 35 | 2 | 57 | 0 |
-| 0% | 2% | 9% | 33% | 2% | 54% | 0% |
+| 0 | 3 | 8 | 35 | 2 | 57 | 0 |
+| 0% | 3% | 8% | 33% | 2% | 54% | 0% |

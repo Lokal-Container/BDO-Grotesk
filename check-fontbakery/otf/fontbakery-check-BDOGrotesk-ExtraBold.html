@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>1</td>
-                <td>6</td>
+                <td>2</td>
+                <td>7</td>
                 <td>43</td>
                 <td>2</td>
-                <td>53</td>
+                <td>51</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>1%</td>
-                <td>6%</td>
+                <td>2%</td>
+                <td>7%</td>
                 <td>41%</td>
                 <td>2%</td>
-                <td>50%</td>
+                <td>49%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -105,7 +105,7 @@
 <h3>Name table records must not have trailing spaces.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/trailing_spaces&gt;</div>
 
-<details><summary>✅ <strong>fonts/otf/BDOGrotesk-ExtraBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No trailing spaces on name table entries.</p>
+<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-ExtraBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>Name table record with key = (3, 1, 1033, 256) has trailing spaces that must be removed: 'Name: ' [code: trailing-space]</p>
 </span></li></ul></div></details>
 <h3>Checking OS/2 usWinAscent & usWinDescent.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/win_ascent_and_descent&gt;</div>
@@ -279,7 +279,7 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 
 - aring.BRACKET.varAlt01 
 
-- 6 more.
+- 17 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists.
 [code: unreachable-glyphs]</p>
@@ -331,8 +331,8 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 <p>An accent placed on characters with a &quot;soft dot&quot;, like i or j, causes the dot to disappear. An explicit dot above can be added where required. See &quot;Diacritics on i and j&quot; in Section 7.1, &quot;Latin&quot; in The Unicode Standard.</p>
 <p>Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt</p>
 
-<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-ExtraBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į̂ į̄ į̌</p>
-<p>The dot of soft dotted characters should disappear in other cases, for example: ĭ̦ i̦̇ i̦̊ i̦̋ i̦̒ j̦̀ j̦̄ j̦̆ j̦̇ j̦̈ j̦̊ j̦̋ ǰ̦ j̦̒ į̆ į̇ į̈ į̊ į̋ į̒ [code: soft-dotted]</p>
+<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-ExtraBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄</p>
+<p>The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]</p>
 </span></li></ul></div></details>
 <h3>Ensure no GPOS7 lookups are present.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos7&gt;</div>
@@ -381,9 +381,9 @@ The following math glyphs have a different width, though:</p>
 <p>Width = 600:
 plus</p>
 <p>Width = 604:
-plusminus, equal</p>
+equal, plusminus</p>
 <p>Width = 601:
-greater, minus, logicalnot</p>
+minus, logicalnot, greater</p>
 <p>Width = 606:
 multiply</p>
 <p>Width = 608:
@@ -860,13 +860,36 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 <details><summary>✅ <strong>fonts/otf/BDOGrotesk-ExtraBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No invalid language tags were found</p>
 </span></li></ul></div></details>
-<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️</h2>
+<h2>&lt;Section: Outline Correctness Checks&gt; ⚠️⚠️⚠️⚠️</h2>
 <h3>Are there any misaligned on-curve points?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_alignment_miss&gt;</div>
 <p>This check heuristically looks for on-curve points which are close to, but do not sit on, significant boundary coordinates. For example, a point which has a Y-coordinate of 1 or -1 might be a misplaced baseline point. As well as the baseline, here we also check for points near the x-height (but only for lowercase Latin letters), cap-height, ascender and descender Y coordinates.</p>
 <p>Not all such misaligned curve points are a mistake, and sometimes the design may call for points in locations near the boundaries. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported misalignments.</p>
 
-<details><summary>✅ <strong>fonts/otf/BDOGrotesk-ExtraBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>So many Y-coordinates of points were close to boundaries that this was probably by design.</p>
+<details><summary>⚠️ <strong>fonts/otf/BDOGrotesk-ExtraBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have on-curve points which have potentially incorrect y coordinates:</p>
+<pre><code>* underscore (U+005F): X=446.0,Y=-1.0 (should be at baseline 0?)
+
+* underscore (U+005F): X=42.0,Y=-1.0 (should be at baseline 0?)
+
+* grave (U+0060): X=120.0,Y=730.0 (should be at cap-height 729?)
+
+* grave (U+0060): X=251.0,Y=730.0 (should be at cap-height 729?)
+
+* r (U+0072): X=409.0,Y=581.0 (should be at x-height 580?)
+
+* t (U+0074): X=96.0,Y=727.0 (should be at cap-height 729?)
+
+* exclamdown (U+00A1): X=80.0,Y=2.0 (should be at baseline 0?)
+
+* exclamdown (U+00A1): X=254.0,Y=2.0 (should be at baseline 0?)
+
+* sterling (U+00A3): X=378.0,Y=730.0 (should be at cap-height 729?)
+
+* dieresis (U+00A8): X=51.0,Y=730.0 (should be at cap-height 729?) 
+
+* 89 more.
+</code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>
 <h3>Are any segments inordinately short?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/outline_short_segments&gt;</div>
@@ -894,7 +917,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * acircumflex (U+00E2) contains a short segment L&lt;&lt;570.0,0.0&gt;--&lt;570.0,6.0&gt;&gt; 
 
-* 26 more.
+* 42 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]</p>
 </span></li></ul></div></details>
@@ -949,7 +972,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * plus (U+002B): L&lt;&lt;378.0,63.0&gt;--&lt;377.0,270.0&gt;&gt; 
 
-* 6 more.
+* 7 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]</p>
 </span></li></ul></div></details>

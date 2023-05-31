@@ -73,15 +73,15 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>1</td>
+                <td>2</td>
                 <td>7</td>
                 <td>42</td>
                 <td>2</td>
-                <td>53</td>
+                <td>52</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>1%</td>
+                <td>2%</td>
                 <td>7%</td>
                 <td>40%</td>
                 <td>2%</td>
@@ -89,7 +89,7 @@
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -105,7 +105,7 @@
 <h3>Name table records must not have trailing spaces.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/trailing_spaces&gt;</div>
 
-<details><summary>✅ <strong>fonts/otf/BDOGrotesk-Bold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No trailing spaces on name table entries.</p>
+<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-Bold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>Name table record with key = (3, 1, 1033, 256) has trailing spaces that must be removed: 'Name: ' [code: trailing-space]</p>
 </span></li></ul></div></details>
 <h3>Checking OS/2 usWinAscent & usWinDescent.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/win_ascent_and_descent&gt;</div>
@@ -279,7 +279,7 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 
 - aring.BRACKET.varAlt01 
 
-- 6 more.
+- 17 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists.
 [code: unreachable-glyphs]</p>
@@ -331,8 +331,8 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 <p>An accent placed on characters with a &quot;soft dot&quot;, like i or j, causes the dot to disappear. An explicit dot above can be added where required. See &quot;Diacritics on i and j&quot; in Section 7.1, &quot;Latin&quot; in The Unicode Standard.</p>
 <p>Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt</p>
 
-<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-Bold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į̂ į̄ į̌</p>
-<p>The dot of soft dotted characters should disappear in other cases, for example: ĭ̦ i̦̇ i̦̊ i̦̋ i̦̒ j̦̀ j̦̄ j̦̆ j̦̇ j̦̈ j̦̊ j̦̋ ǰ̦ j̦̒ į̆ į̇ į̈ į̊ į̋ į̒ [code: soft-dotted]</p>
+<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-Bold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄</p>
+<p>The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]</p>
 </span></li></ul></div></details>
 <h3>Ensure no GPOS7 lookups are present.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos7&gt;</div>
@@ -383,7 +383,7 @@ plus</p>
 <p>Width = 609:
 equal</p>
 <p>Width = 602:
-minus, logicalnot</p>
+logicalnot, minus</p>
 <p>Width = 608:
 plusminus</p>
 <p>Width = 612:
@@ -873,13 +873,13 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <details><summary>⚠️ <strong>fonts/otf/BDOGrotesk-Bold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have on-curve points which have potentially incorrect y coordinates:</p>
 <pre><code>* sterling (U+00A3): X=365.0,Y=730.0 (should be at cap-height 729?)
 
-* onequarter (U+00BC): X=42.0,Y=-1.0 (should be at baseline 0?)
+* onequarter (U+00BC): X=62.0,Y=-1.0 (should be at baseline 0?)
 
-* onequarter (U+00BC): X=143.0,Y=-1.0 (should be at baseline 0?)
+* onequarter (U+00BC): X=163.0,Y=-1.0 (should be at baseline 0?)
 
-* onehalf (U+00BD): X=42.0,Y=-1.0 (should be at baseline 0?)
+* onehalf (U+00BD): X=62.0,Y=-1.0 (should be at baseline 0?)
 
-* onehalf (U+00BD): X=143.0,Y=-1.0 (should be at baseline 0?)
+* onehalf (U+00BD): X=163.0,Y=-1.0 (should be at baseline 0?)
 
 * threequarters (U+00BE): X=208.0,Y=-1.0 (should be at baseline 0?)
 
@@ -889,9 +889,9 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * Oslash (U+00D8): X=713.0,Y=728.0 (should be at cap-height 729?)
 
-* OE (U+0152): X=412.0,Y=1.0 (should be at baseline 0?) 
+* gbreve (U+011F): X=321.0,Y=731.0 (should be at cap-height 729?) 
 
-* 24 more.
+* 35 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>
@@ -921,7 +921,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * aring (U+00E5) contains a short segment L&lt;&lt;605.0,114.0&gt;--&lt;599.0,114.0&gt;&gt; 
 
-* 24 more.
+* 42 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]</p>
 </span></li></ul></div></details>
@@ -968,18 +968,17 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * franc (U+20A3): L&lt;&lt;558.0,728.0&gt;--&lt;108.0,729.0&gt;&gt;
 
+* uni00B5 (U+00B5): L&lt;&lt;67.0,576.0&gt;--&lt;65.0,-167.0&gt;&gt;
+
 * uni03BC (U+03BC): L&lt;&lt;67.0,576.0&gt;--&lt;65.0,-167.0&gt;&gt;
 
-* uni21B9 (U+21B9): L&lt;&lt;108.0,146.0&gt;--&lt;710.0,145.0&gt;&gt;
+* uni21A4 (U+21A4): L&lt;&lt;266.0,291.0&gt;--&lt;726.0,292.0&gt;&gt;
 
-* uni21B9 (U+21B9): L&lt;&lt;979.0,583.0&gt;--&lt;377.0,584.0&gt;&gt;
+* uni21A5 (U+21A5): L&lt;&lt;394.0,134.0&gt;--&lt;395.0,537.0&gt;&gt; 
 
-* uni2600 (U+2600): L&lt;&lt;56.0,333.0&gt;--&lt;189.0,334.0&gt;&gt;
-
-* uni2600 (U+2600): L&lt;&lt;786.0,396.0&gt;--&lt;653.0,395.0&gt;&gt; 
-
-* uni261E (U+261E): L&lt;&lt;508.0,427.0&gt;--&lt;907.0,426.0&gt;&gt; [code: found-semi-vertical]
+* 3 more.
 </code></pre>
+<p>Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]</p>
 </span></li></ul></div></details>
 <h2>&lt;Section: Shaping Checks&gt; ⏩⏩⏩</h2>
 <h3>Check that texts shape as per expectation</h3>

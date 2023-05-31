@@ -60,16 +60,20 @@ Fontbakery version: 0.8.11
 >This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.
 >
 * 💤 **SKIP** Unfulfilled Conditions: RIBBI_ttFonts
-</div></details><br></div></details><details><summary><b>[95] BDOGrotesk-Medium.otf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[95] BDOGrotesk-Medium.otf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Name table records must not have trailing spaces. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/name/trailing_spaces">com.google.fonts/check/name/trailing_spaces</a>)</summary><div>
+
+
+* 🔥 **FAIL** Name table record with key = (3, 1, 1033, 256) has trailing spaces that must be removed: 'Name: ' [code: trailing-space]
+</div></details><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
 >
 >An accent placed on characters with a "soft dot", like i or j, causes the dot to disappear. An explicit dot above can be added where required. See "Diacritics on i and j" in Section 7.1, "Latin" in The Unicode Standard.
 >
 >Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
 >
-* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į̂ į̄ į̌
+* 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
-The dot of soft dotted characters should disappear in other cases, for example: ĭ̦ i̦̇ i̦̊ i̦̋ i̦̒ j̦̀ j̦̄ j̦̆ j̦̇ j̦̈ j̦̊ j̦̋ ǰ̦ j̦̒ į̆ į̇ į̈ į̊ į̋ į̒ [code: soft-dotted]
+The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]
 </div></details><details><summary>⚠ <b>WARN:</b> Glyph names are all valid? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/valid_glyphnames">com.google.fonts/check/valid_glyphnames</a>)</summary><div>
 
 >
@@ -118,7 +122,7 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 
 	- aring.BRACKET.varAlt01 
 
-	- 6 more.
+	- 17 more.
 
 Use -F or --full-lists to disable shortening of long lists.
  [code: unreachable-glyphs]
@@ -136,7 +140,7 @@ Width = 601:
 plus
 
 Width = 618:
-plusminus, equal
+equal, plusminus
 
 Width = 606:
 greater
@@ -148,7 +152,7 @@ Width = 626:
 multiply
 
 Width = 608:
-lessequal, divide
+divide, lessequal
 
 Width = 603:
 minus
@@ -168,6 +172,10 @@ notequal
 >
 * ⚠ **WARN** The following glyphs have on-curve points which have potentially incorrect y coordinates:
 
+	* percent (U+0025): X=749.0,Y=730.0 (should be at cap-height 729?)
+
+	* percent (U+0025): X=648.0,Y=730.0 (should be at cap-height 729?)
+
 	* a (U+0061): X=582.0,Y=2.0 (should be at baseline 0?)
 
 	* f (U+0066): X=206.0,Y=565.0 (should be at x-height 566?)
@@ -182,13 +190,9 @@ notequal
 
 	* t (U+0074): X=98.0,Y=565.0 (should be at x-height 566?)
 
-	* Oslash (U+00D8): X=79.0,Y=-1.0 (should be at baseline 0?)
+	* Oslash (U+00D8): X=79.0,Y=-1.0 (should be at baseline 0?) 
 
-	* Oslash (U+00D8): X=679.0,Y=728.0 (should be at cap-height 729?)
-
-	* agrave (U+00E0): X=582.0,Y=2.0 (should be at baseline 0?) 
-
-	* 76 more.
+	* 63 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
 </div></details><details><summary>⚠ <b>WARN:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
@@ -220,7 +224,7 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 
 	* adieresis (U+00E4) contains a short segment L<<582.0,84.0>--<576.0,84.0>> 
 
-	* 25 more.
+	* 49 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]
 </div></details><details><summary>⚠ <b>WARN:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
@@ -276,7 +280,7 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-short-s
 
 	* plus (U+002B): L<<353.0,391.0>--<354.0,608.0>> 
 
-	* 6 more.
+	* 8 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]
 </div></details><details><summary>💤 <b>SKIP:</b> Font has **proper** whitespace glyph names? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/whitespace_glyphnames">com.google.fonts/check/whitespace_glyphnames</a>)</summary><div>
@@ -661,10 +665,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Only the fontfiles in these directories will be considered in superfamily-level checks.
 >
 * ℹ **INFO** fonts/otf [code: family-path]
-</div></details><details><summary>🍞 <b>PASS:</b> Name table records must not have trailing spaces. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/name/trailing_spaces">com.google.fonts/check/name/trailing_spaces</a>)</summary><div>
-
-
-* 🍞 **PASS** No trailing spaces on name table entries.
 </div></details><details><summary>🍞 <b>PASS:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
 
 >
@@ -997,5 +997,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 1 | 7 | 43 | 2 | 52 | 0 |
-| 0% | 1% | 7% | 41% | 2% | 50% | 0% |
+| 0 | 2 | 7 | 43 | 2 | 51 | 0 |
+| 0% | 2% | 7% | 41% | 2% | 49% | 0% |

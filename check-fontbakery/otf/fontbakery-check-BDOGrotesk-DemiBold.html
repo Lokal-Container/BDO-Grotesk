@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>1</td>
+                <td>2</td>
                 <td>7</td>
                 <td>46</td>
                 <td>2</td>
-                <td>49</td>
+                <td>48</td>
             </tr>
             <tr>
                 <td>0%</td>
-                <td>1%</td>
+                <td>2%</td>
                 <td>7%</td>
                 <td>44%</td>
                 <td>2%</td>
-                <td>47%</td>
+                <td>46%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -105,7 +105,7 @@
 <h3>Name table records must not have trailing spaces.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/trailing_spaces&gt;</div>
 
-<details><summary>✅ <strong>fonts/otf/BDOGrotesk-DemiBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No trailing spaces on name table entries.</p>
+<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-DemiBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>Name table record with key = (3, 1, 1033, 256) has trailing spaces that must be removed: 'Name: ' [code: trailing-space]</p>
 </span></li></ul></div></details>
 <h3>Checking OS/2 usWinAscent & usWinDescent.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/win_ascent_and_descent&gt;</div>
@@ -279,7 +279,7 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 
 - aring.BRACKET.varAlt01 
 
-- 6 more.
+- 17 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists.
 [code: unreachable-glyphs]</p>
@@ -331,8 +331,8 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 <p>An accent placed on characters with a &quot;soft dot&quot;, like i or j, causes the dot to disappear. An explicit dot above can be added where required. See &quot;Diacritics on i and j&quot; in Section 7.1, &quot;Latin&quot; in The Unicode Standard.</p>
 <p>Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt</p>
 
-<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-DemiBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į̂ į̄ į̌</p>
-<p>The dot of soft dotted characters should disappear in other cases, for example: ĭ̦ i̦̇ i̦̊ i̦̋ i̦̒ j̦̀ j̦̄ j̦̆ j̦̇ j̦̈ j̦̊ j̦̋ ǰ̦ j̦̒ į̆ į̇ į̈ į̊ į̋ į̒ [code: soft-dotted]</p>
+<details><summary>🔥 <strong>fonts/otf/BDOGrotesk-DemiBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄</p>
+<p>The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]</p>
 </span></li></ul></div></details>
 <h3>Ensure no GPOS7 lookups are present.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/gpos7&gt;</div>
@@ -868,7 +868,11 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <p>Not all such misaligned curve points are a mistake, and sometimes the design may call for points in locations near the boundaries. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported misalignments.</p>
 
 <details><summary>⚠️ <strong>fonts/otf/BDOGrotesk-DemiBold.otf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have on-curve points which have potentially incorrect y coordinates:</p>
-<pre><code>* f (U+0066): X=231.0,Y=569.0 (should be at x-height 571?)
+<pre><code>* percent (U+0025): X=754.0,Y=730.0 (should be at cap-height 729?)
+
+* percent (U+0025): X=644.0,Y=730.0 (should be at cap-height 729?)
+
+* f (U+0066): X=231.0,Y=569.0 (should be at x-height 571?)
 
 * f (U+0066): X=96.0,Y=569.0 (should be at x-height 571?)
 
@@ -880,15 +884,11 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * t (U+0074): X=97.0,Y=569.0 (should be at x-height 571?)
 
-* onequarter (U+00BC): X=42.0,Y=-1.0 (should be at baseline 0?)
+* onequarter (U+00BC): X=62.0,Y=-1.0 (should be at baseline 0?)
 
-* onequarter (U+00BC): X=136.0,Y=-1.0 (should be at baseline 0?)
+* onequarter (U+00BC): X=156.0,Y=-1.0 (should be at baseline 0?) 
 
-* onehalf (U+00BD): X=42.0,Y=-1.0 (should be at baseline 0?)
-
-* onehalf (U+00BD): X=136.0,Y=-1.0 (should be at baseline 0?) 
-
-* 59 more.
+* 37 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]</p>
 </span></li></ul></div></details>
@@ -918,7 +918,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * acircumflex (U+00E2) contains a short segment L&lt;&lt;594.0,101.0&gt;--&lt;588.0,101.0&gt;&gt; 
 
-* 34 more.
+* 63 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]</p>
 </span></li></ul></div></details>
@@ -975,9 +975,9 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * summation (U+2211): L&lt;&lt;221.0,607.0&gt;--&lt;554.0,608.0&gt;&gt;
 
-* uni03BC (U+03BC): L&lt;&lt;68.0,573.0&gt;--&lt;67.0,-167.0&gt;&gt; 
+* uni00B5 (U+00B5): L&lt;&lt;68.0,573.0&gt;--&lt;67.0,-167.0&gt;&gt; 
 
-* 3 more.
+* 5 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-semi-vertical]</p>
 </span></li></ul></div></details>
