@@ -73,23 +73,23 @@
             </tr>
             <tr>
                 <td>0</td>
-                <td>2</td>
+                <td>1</td>
                 <td>8</td>
                 <td>35</td>
                 <td>2</td>
-                <td>58</td>
+                <td>62</td>
             </tr>
             <tr>
                 <td>0%</td>
+                <td>1%</td>
+                <td>7%</td>
+                <td>32%</td>
                 <td>2%</td>
-                <td>8%</td>
-                <td>33%</td>
-                <td>2%</td>
-                <td>55%</td>
+                <td>57%</td>
             </tr>
             </table>
             
-<h2>&lt;Section: Universal&gt; 🔥🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
+<h2>&lt;Section: Universal&gt; 🔥⚠️⚠️⚠️⏩⏩⏩⏩⏩ℹ️ℹ️</h2>
 <h3>Checking all files are in the same directory.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/family/single_directory&gt;</div>
 <p>If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).</p>
@@ -314,7 +314,7 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 
 - Glyph name: ohorn	Contours detected: 3	Expected: 2 
 
-- 76 more.
+- 52 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists.
 [code: contour-count]</p>
@@ -322,8 +322,9 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 <h3>Does the font contain a soft hyphen?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/soft_hyphen&gt;</div>
 <p>The 'Soft Hyphen' character (codepoint 0x00AD) is used to mark a hyphenation possibility within a word in the absence of or overriding dictionary hyphenation.</p>
-<p>It is supposed to be zero-width and invisible.</p>
-<p>It is also mostly an obsolete mechanism now, and the character is typicaly only included in fonts for legacy codepage coverage.</p>
+<p>It is sometimes designed empty with no width (such as a control character), sometimes the same as the traditional hyphen, sometimes double encoded with the hyphen.</p>
+<p>That being said, it is recommended to not include it in the font at all, because discretionary hyphenation should be handled at the level of the shaping engine, not the font. Also, even if present, the software would not display that character.</p>
+<p>More discussion at: https://typedrawers.com/discussion/2046/special-dash-things-softhyphen-horizontalbar</p>
 
 <details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Looks good!</p>
 </span></li></ul></div></details>
@@ -343,35 +344,7 @@ parenleft_hyphen_greater_parenright.dlig, parenleft_hyphen_greater_greater_paren
 <p>When building the font with fontmake, the problem can be fixed by adding this to the command line:</p>
 <p>--filter DecomposeTransformedComponentsFilter</p>
 
-<details><summary>🔥 <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The following glyphs had components with scaling or rotation
-or inverted outline direction:</p>
-<ul>
-<li>uni27E9 (component uni27E8)</li>
-<li>uni27EB (component uni27EA)</li>
-<li>uni27ED (component uni27EC)</li>
-<li>exclamdown (component exclam)</li>
-<li>backslash (component slash)</li>
-<li>backslash.ss02 (component slash.ss02)</li>
-<li>braceright (component braceleft)</li>
-<li>uni2E29 (component uni2E28)</li>
-<li>braceright.case (component braceleft.case)</li>
-<li>uni3011.case (component uni3010.case)</li>
-<li>arrowdown (component arrowup)</li>
-<li>arrowleft (component arrowright)</li>
-<li>uni21A4 (component uni21A6)</li>
-<li>uni21AA (component uni21A9)</li>
-<li>uni21B1 (component uni21B0)</li>
-<li>uni21B3 (component uni21B2)</li>
-<li>uni21BB (component uni21BA)</li>
-<li>uni21CA (component uni21C8)</li>
-<li>uni2198.ss04 (component uni2197.ss04)</li>
-<li>arrowdown.ss04 (component arrowup.ss04)</li>
-<li>uni2196.ss04 (component uni2197.ss04)</li>
-<li>uni25A8 (component uni25A7)</li>
-<li>uni25C0 (component uni25B6)</li>
-<li>uni25C1 (component uni25B7)
-[code: transformed-components]</li>
-</ul>
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>No glyphs had components with scaling or rotation</p>
 </span></li></ul></div></details>
 <h3>Ensure dotted circle glyph is present and can attach marks.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/dotted_circle&gt;</div>
@@ -385,6 +358,7 @@ or inverted outline direction:</p>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/soft_dotted&gt;</div>
 <p>An accent placed on characters with a &quot;soft dot&quot;, like i or j, causes the dot to disappear. An explicit dot above can be added where required. See &quot;Diacritics on i and j&quot; in Section 7.1, &quot;Latin&quot; in The Unicode Standard.</p>
 <p>Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt</p>
+<p>See also: https://googlefonts.github.io/gf-guide/diacritics.html#soft-dotted-glyphs</p>
 
 <details><summary>🔥 <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>🔥 FAIL</span><span class='details_text'><p>The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄</p>
 <p>The dot of soft dotted characters should disappear in other cases, for example: į̆ į̇ į̈ į̉ į̊ į̋ į̒ į̛̀ į̛́ į̛̂ į̛̃ į̛̄ į̛̆ į̛̇ į̛̈ į̛̉ į̛̊ į̛̋ į̛̌ į̛̒ [code: soft-dotted]</p>
@@ -401,7 +375,7 @@ or inverted outline direction:</p>
 <div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/freetype_rasterizer&gt;</div>
 <p>Malformed fonts can cause FreeType to crash.</p>
 
-<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>FreeType is not available; to install it, invoke the 'freetype' extra when installing Font Bakery. [code: freetype-not-installed]</p>
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font can be rasterized by FreeType.</p>
 </span></li></ul></div></details>
 <h3>Font has the proper sfntVersion value?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/sfnt_version&gt;</div>
@@ -432,6 +406,23 @@ or inverted outline direction:</p>
 <p>This probably comes from the will to avoid additional tabular math signs knowing that their design can easily share the same width.</p>
 
 <details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Looks good.</p>
+</span></li></ul></div></details>
+<h3>Checking Vertical Metric Linegaps.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/linegaps&gt;</div>
+<p>The LineGap value is a space added to the line height created by the union of the (typo/hhea)Ascender and (typo/hhea)Descender. It is handled differently according to the environment.</p>
+<p>This leading value will be added above the text line in most desktop apps. It will be shared above and under in web browsers, and ignored in Windows if Use_Typo_Metrics is disabled.</p>
+<p>For better linespacing consistency across platforms, (typo/hhea)LineGap values must be 0.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 sTypoLineGap and hhea lineGap are both 0.</p>
+</span></li></ul></div></details>
+<h3>Checking STAT table entries in static fonts.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/STAT_in_statics&gt;</div>
+<p>Adobe feature syntax allows for the definition of a STAT table. Fonts built with a hand-coded STAT table in feature syntax may be built either as static or variable, but will end up with the same STAT table.</p>
+<p>This is a problem, because a STAT table which works on variable fonts will not be appropriate for static instances. The examples in the OpenType spec of non-variable fonts with a STAT table show that the table entries must be restricted to those entries which refer to the static font's position in the designspace. i.e. a Regular weight static should only have the following entry for the weight axis:</p>
+<p><AxisIndex value="0"/> <Flags value="2"/>  <!-- ElidableAxisValueName --> <ValueNameID value="265"/>  <!-- Regular --> <Value value="400.0"/></p>
+<p>However, if the STAT table intended for a variable font is compiled into a static, it will have many entries for this axis. In this case, Windows will read the first entry only, causing all instances to report themselves as &quot;Thin Condensed&quot;.</p>
+
+<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Looks good!</p>
 </span></li></ul></div></details>
 <h2>&lt;Section: fontbakery.profiles.cff&gt; ⏩⏩⏩</h2>
 <h3>Is the CFF subr/gsubr call depth > 10?</h3>
@@ -563,13 +554,22 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 <details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Value of post.italicAngle is 0.0 with style=&quot;Light&quot;.</p>
 </span></li></ul></div></details>
-<h2>&lt;Section: fontbakery.profiles.name&gt; ⏩</h2>
+<h2>&lt;Section: fontbakery.profiles.name&gt; ⏩⏩</h2>
 <h3>Verify that each group of fonts with the same nameID 1 has maximum of 4 fonts.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/family/max_4_fonts_per_family_name&gt;</div>
 <p>Per the OpenType spec:</p>
 <p>'The Font Family name [...] should be shared among at most four fonts that differ only in weight or style [...]'</p>
 
 <details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>There were no more than 4 fonts per family name.</p>
+</span></li></ul></div></details>
+<h3>Verify that family names in the name table are consistent across all fonts in the family. Checks Typographic Family name (nameID 16) if present,  otherwise uses Font Family name (nameID 1)</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/family/consistent_family_name&gt;</div>
+<p>Per the OpenType spec: * &quot;...many existing applications that use this pair of names assume that a Font Family name is shared by at most four fonts that form a font style-linking group&quot; * &quot;For extended typographic families that includes fonts other than the four basic styles(regular, italic, bold, bold italic), it is strongly recommended that name IDs 16 and 17 be used in fonts to create an extended, typographic grouping.&quot; * &quot;If name ID 16 is absent, then name ID 1 is considered to be the typographic family name.&quot;</p>
+<p>https://learn.microsoft.com/en-us/typography/opentype/spec/name</p>
+<p>Fonts within a font family all must have consistent names in the Typographic Family name (nameID 16) or Font Family name (nameID 1), depending on which it uses.</p>
+<p>Inconsistent font/typographic family names across fonts in a family can result in unexpected behaviors, such as broken style linking.</p>
+
+<details><summary>✅ <strong>Family check</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Font family names are consistent across the family.</p>
 </span></li></ul></div></details>
 <h3>Check name table for empty records.</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.adobe.fonts/check/name/empty_records&gt;</div>
@@ -642,6 +642,12 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 <details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>Entries in the &quot;name&quot; table for ID 6 (PostScript name) are consistent.</p>
 </span></li></ul></div></details>
+<h3>Check name table IDs 1, 2, 16, 17 to conform to Italic style.</h3>
+<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/name/italic_names&gt;</div>
+<p>This check ensures that several entries in the name table conform to the font's Upright or Italic style, namely IDs 1 &amp; 2 as well as 16 &amp; 17 if they're present.</p>
+
+<details><summary>⏩ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⏩ SKIP</span><span class='details_text'><p>Font is not Italic.</p>
+</span></li></ul></div></details>
 <h2>&lt;Section: fontbakery.profiles.loca&gt; </h2>
 <h3>Does the number of glyphs in the loca table match the maxp table?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/loca/maxp_num_glyphs&gt;</div>
@@ -649,11 +655,6 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>'loca' table matches numGlyphs in 'maxp' table.</p>
 </span></li></ul></div></details>
 <h2>&lt;Section: fontbakery.profiles.hhea&gt; </h2>
-<h3>Checking Vertical Metric Linegaps.</h3>
-<div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/linegaps&gt;</div>
-
-<details><summary>✅ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>✅ PASS</span><span class='details_text'><p>OS/2 sTypoLineGap and hhea lineGap are both 0.</p>
-</span></li></ul></div></details>
 <h3>MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables?</h3>
 <div>Check ID: &lt;FontBakeryCheck:com.google.fonts/check/maxadvancewidth&gt;</div>
 
@@ -958,7 +959,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * ae (U+00E6) contains a short segment B&lt;&lt;904.0,290.0&gt;-&lt;903.0,274.0&gt;-&lt;902.0,266.0&gt;&gt; 
 
-* 61 more.
+* 49 more.
 </code></pre>
 <p>Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]</p>
 </span></li></ul></div></details>
@@ -972,19 +973,17 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 
 * exclam (U+0021): L&lt;&lt;165.0,729.0&gt;--&lt;165.0,536.0&gt;&gt; -&gt; L&lt;&lt;165.0,536.0&gt;--&lt;152.0,205.0&gt;&gt;
 
-* exclamdown (U+00A1): L&lt;&lt;115.0,352.0&gt;--&lt;102.0,21.0&gt;&gt; -&gt; L&lt;&lt;102.0,21.0&gt;--&lt;102.0,-172.0&gt;&gt;
+* exclamdown (U+00A1): L&lt;&lt;102.0,-172.0&gt;--&lt;102.0,21.0&gt;&gt; -&gt; L&lt;&lt;102.0,21.0&gt;--&lt;115.0,352.0&gt;&gt;
 
-* exclamdown (U+00A1): L&lt;&lt;165.0,-172.0&gt;--&lt;165.0,21.0&gt;&gt; -&gt; L&lt;&lt;165.0,21.0&gt;--&lt;152.0,352.0&gt;&gt;
+* exclamdown (U+00A1): L&lt;&lt;152.0,352.0&gt;--&lt;165.0,21.0&gt;&gt; -&gt; L&lt;&lt;165.0,21.0&gt;--&lt;165.0,-172.0&gt;&gt;
 
 * radical (U+221A): L&lt;&lt;276.0,386.0&gt;--&lt;276.0,386.0&gt;&gt; -&gt; L&lt;&lt;276.0,386.0&gt;--&lt;277.0,386.0&gt;&gt;
 
 * uni21BA (U+21BA): L&lt;&lt;471.0,625.0&gt;--&lt;476.0,555.0&gt;&gt; -&gt; L&lt;&lt;476.0,555.0&gt;--&lt;476.0,411.0&gt;&gt;
 
-* uni21BA (U+21BA): L&lt;&lt;737.0,666.0&gt;--&lt;587.0,666.0&gt;&gt; -&gt; L&lt;&lt;587.0,666.0&gt;--&lt;519.0,671.0&gt;&gt;
+* uni21BA (U+21BA): L&lt;&lt;737.0,666.0&gt;--&lt;587.0,666.0&gt;&gt; -&gt; L&lt;&lt;587.0,666.0&gt;--&lt;519.0,671.0&gt;&gt; 
 
-* uni21BB (U+21BB): L&lt;&lt;106.0,666.0&gt;--&lt;256.0,666.0&gt;&gt; -&gt; L&lt;&lt;256.0,666.0&gt;--&lt;324.0,671.0&gt;&gt; 
-
-* uni21BB (U+21BB): L&lt;&lt;372.0,625.0&gt;--&lt;367.0,555.0&gt;&gt; -&gt; L&lt;&lt;367.0,555.0&gt;--&lt;367.0,411.0&gt;&gt; [code: found-colinear-vectors]
+* uni21BB (U+21BB): L&lt;&lt;367.0,411.0&gt;--&lt;367.0,555.0&gt;&gt; -&gt; L&lt;&lt;367.0,555.0&gt;--&lt;372.0,625.0&gt;&gt; [code: found-colinear-vectors]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Do outlines contain any jaggy segments?</h3>
@@ -994,7 +993,7 @@ You'll also need to use the <code>--configuration</code> flag when invoking font
 <details><summary>⚠️ <strong>fonts/ttf/BDOGrotesk-Light.ttf</strong></summary><div><ul><li class='details_item'><span class='details_indicator'>⚠️ WARN</span><span class='details_text'><p>The following glyphs have jaggy segments:</p>
 <pre><code>* braceleft (U+007B): B&lt;&lt;229.5,371.0&gt;-&lt;211.0,335.0&gt;-&lt;176.0,332.0&gt;&gt;/B&lt;&lt;176.0,332.0&gt;-&lt;211.0,329.0&gt;-&lt;229.5,293.0&gt;&gt; = 9.79818490757551 
 
-* braceright (U+007D): B&lt;&lt;178.5,371.0&gt;-&lt;197.0,335.0&gt;-&lt;232.0,332.0&gt;&gt;/B&lt;&lt;232.0,332.0&gt;-&lt;197.0,329.0&gt;-&lt;178.5,293.0&gt;&gt; = 9.79818490757551 [code: found-jaggy-segments]
+* braceright (U+007D): B&lt;&lt;178.5,293.0&gt;-&lt;197.0,329.0&gt;-&lt;232.0,332.0&gt;&gt;/B&lt;&lt;232.0,332.0&gt;-&lt;197.0,335.0&gt;-&lt;178.5,371.0&gt;&gt; = 9.79818490757551 [code: found-jaggy-segments]
 </code></pre>
 </span></li></ul></div></details>
 <h3>Do outlines contain any semi-vertical or semi-horizontal lines?</h3>

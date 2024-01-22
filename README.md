@@ -5,7 +5,7 @@ Short description of Demo Font. Read more about this [project](https://github.co
 
 ## Specimen
 
-"![BDOGroteskImage](./documentation/images/BDOGrotesk.png)"
+![BDOGroteskImage](./documentation/images/BDOGrotesk.png)
 
 ## License
 

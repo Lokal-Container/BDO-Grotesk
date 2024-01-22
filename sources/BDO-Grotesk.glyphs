@@ -1,5 +1,8 @@
 {
-.appVersion = "3197";
+.appVersion = "3234";
+DisplayStrings = (
+"/aogonek aá"
+);
 classes = (
 {
 automatic = 1;
@@ -42,10 +45,6 @@ name = "Use Extension Kerning";
 value = 1;
 },
 {
-name = vendorID;
-value = LCT;
-},
-{
 name = license;
 value = "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: http://scripts.sil.org/OFL";
 },
@@ -56,6 +55,10 @@ value = "https://scripts.sil.org/OFL";
 {
 name = sampleText;
 value = "Texte in Point & Millimeter";
+},
+{
+name = vendorID;
+value = LCT;
 },
 {
 name = Axes;
@@ -17754,6 +17757,20 @@ nodes = (
 width = 580;
 },
 {
+anchors = (
+{
+name = bottom;
+position = "{290, 0}";
+},
+{
+name = ogonek;
+position = "{528, 0}";
+},
+{
+name = top;
+position = "{290, 563}";
+}
+);
 associatedMasterId = "47995495-C855-4C5A-BA32-118EA0334940";
 background = {
 paths = (
@@ -18046,6 +18063,20 @@ nodes = (
 width = 639;
 },
 {
+anchors = (
+{
+name = bottom;
+position = "{276, 0}";
+},
+{
+name = ogonek;
+position = "{491, 0}";
+},
+{
+name = top;
+position = "{276, 557}";
+}
+);
 associatedMasterId = "F114AD5B-DC62-4E73-AD12-1938E40AC8EF";
 background = {
 paths = (
@@ -18208,6 +18239,20 @@ nodes = (
 width = 552;
 },
 {
+anchors = (
+{
+name = bottom;
+position = "{320, 0}";
+},
+{
+name = ogonek;
+position = "{581, 0}";
+},
+{
+name = top;
+position = "{320, 584}";
+}
+);
 associatedMasterId = "E787E54A-EE3E-475A-BF02-8501A6DA5144";
 background = {
 paths = (
@@ -18392,19 +18437,19 @@ layerId = "47995495-C855-4C5A-BA32-118EA0334940";
 width = 580;
 },
 {
-associatedMasterId = "F114AD5B-DC62-4E73-AD12-1938E40AC8EF";
+associatedMasterId = "E787E54A-EE3E-475A-BF02-8501A6DA5144";
 components = (
 {
 name = a;
 },
 {
 name = acute;
-transform = "{1, 0, 0, 1, 552, 0}";
+transform = "{1, 0, 0, 1, 203, -79}";
 }
 );
-layerId = "938E7074-6C9B-457E-A4A3-E88486E3FC90";
+layerId = "F99A4BC7-E162-4147-AB94-3ABC12240C35";
 name = "[720]";
-width = 770;
+width = 616;
 },
 {
 associatedMasterId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -18422,19 +18467,19 @@ name = "[720]";
 width = 868;
 },
 {
-associatedMasterId = "E787E54A-EE3E-475A-BF02-8501A6DA5144";
+associatedMasterId = "F114AD5B-DC62-4E73-AD12-1938E40AC8EF";
 components = (
 {
 name = a;
 },
 {
 name = acute;
-transform = "{1, 0, 0, 1, 616, 0}";
+transform = "{1, 0, 0, 1, 552, 0}";
 }
 );
-layerId = "F99A4BC7-E162-4147-AB94-3ABC12240C35";
+layerId = "938E7074-6C9B-457E-A4A3-E88486E3FC90";
 name = "[720]";
-width = 923;
+width = 770;
 }
 );
 leftKerningGroup = KO_a;
@@ -18883,7 +18928,7 @@ name = a;
 },
 {
 name = brevecomb_hookabovecomb;
-transform = "{1, 0, 0, 1, 119, -103}";
+transform = "{1, 0, 0, 1, 104, 0}";
 }
 );
 layerId = "26819684-CBA9-445E-B3F7-FEC316FA6660";
@@ -18898,7 +18943,7 @@ name = a;
 },
 {
 name = brevecomb_hookabovecomb;
-transform = "{1, 0, 0, 1, 123, -98}";
+transform = "{1, 0, 0, 1, 101, 0}";
 }
 );
 layerId = "7C7DD620-60B6-4D9E-97AC-059464AC122A";
@@ -18913,7 +18958,7 @@ name = a;
 },
 {
 name = brevecomb_hookabovecomb;
-transform = "{1, 0, 0, 1, 139, -79}";
+transform = "{1, 0, 0, 1, 106, 0}";
 }
 );
 layerId = "BA532C6C-7BD0-4471-BA48-B855850B2BEC";
@@ -112506,8 +112551,9 @@ alignment = 1;
 name = circumflexcomb.viet;
 },
 {
+anchor = top_viet;
 name = acutecomb.viet;
-transform = "{1, 0, 0, 1, 105, 100}";
+transform = "{1, 0, 0, 1, 221, 77}";
 }
 );
 layerId = "F114AD5B-DC62-4E73-AD12-1938E40AC8EF";
@@ -112554,8 +112600,9 @@ alignment = 1;
 name = circumflexcomb.viet;
 },
 {
+anchor = top_viet;
 name = acutecomb.viet;
-transform = "{1, 0, 0, 1, 140, 146}";
+transform = "{1, 0, 0, 1, 324, 50}";
 }
 );
 layerId = "E787E54A-EE3E-475A-BF02-8501A6DA5144";
@@ -112602,8 +112649,9 @@ alignment = 1;
 name = circumflexcomb.viet;
 },
 {
+anchor = top_viet;
 name = acutecomb.viet;
-transform = "{1, 0, 0, 1, 152, 99}";
+transform = "{1, 0, 0, 1, 304, 71}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";
@@ -112661,8 +112709,9 @@ alignment = 1;
 name = circumflexcomb.viet;
 },
 {
+anchor = top_viet;
 name = gravecomb.viet;
-transform = "{1, 0, 0, 1, 23, 100}";
+transform = "{1, 0, 0, 1, 133, 77}";
 }
 );
 layerId = "F114AD5B-DC62-4E73-AD12-1938E40AC8EF";
@@ -112709,8 +112758,9 @@ alignment = 1;
 name = circumflexcomb.viet;
 },
 {
+anchor = top_viet;
 name = gravecomb.viet;
-transform = "{1, 0, 0, 1, 26, 146}";
+transform = "{1, 0, 0, 1, 288, 50}";
 }
 );
 layerId = "E787E54A-EE3E-475A-BF02-8501A6DA5144";
@@ -112757,8 +112807,9 @@ alignment = 1;
 name = circumflexcomb.viet;
 },
 {
+anchor = top_viet;
 name = gravecomb.viet;
-transform = "{1, 0, 0, 1, 58, 99}";
+transform = "{1, 0, 0, 1, 206, 71}";
 }
 );
 layerId = "47995495-C855-4C5A-BA32-118EA0334940";

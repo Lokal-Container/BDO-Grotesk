@@ -1,8 +1,8 @@
 ## Fontbakery report
 
-Fontbakery version: 0.8.11
+Fontbakery version: 0.8.13
 
-<details><summary><b>[10] Family checks</b></summary><div><details><summary>🍞 <b>PASS:</b> Checking all files are in the same directory. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/single_directory">com.google.fonts/check/family/single_directory</a>)</summary><div>
+<details><summary><b>[11] Family checks</b></summary><div><details><summary>🍞 <b>PASS:</b> Checking all files are in the same directory. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/single_directory">com.google.fonts/check/family/single_directory</a>)</summary><div>
 
 >
 >If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).
@@ -46,6 +46,18 @@ Fontbakery version: 0.8.11
 >'The Font Family name [...] should be shared among at most four fonts that differ only in weight or style [...]'
 >
 * 🍞 **PASS** There were no more than 4 fonts per family name.
+</div></details><details><summary>🍞 <b>PASS:</b> Verify that family names in the name table are consistent across all fonts in the family. Checks Typographic Family name (nameID 16) if present,  otherwise uses Font Family name (nameID 1) (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/family/consistent_family_name">com.adobe.fonts/check/family/consistent_family_name</a>)</summary><div>
+
+>
+>Per the OpenType spec: * "...many existing applications that use this pair of names assume that a Font Family name is shared by at most four fonts that form a font style-linking group" * "For extended typographic families that includes fonts other than the four basic styles(regular, italic, bold, bold italic), it is strongly recommended that name IDs 16 and 17 be used in fonts to create an extended, typographic grouping." * "If name ID 16 is absent, then name ID 1 is considered to be the typographic family name."
+>
+>https://learn.microsoft.com/en-us/typography/opentype/spec/name
+>
+>Fonts within a font family all must have consistent names in the Typographic Family name (nameID 16) or Font Family name (nameID 1), depending on which it uses.
+>
+>Inconsistent font/typographic family names across fonts in a family can result in unexpected behaviors, such as broken style linking.
+>
+* 🍞 **PASS** Font family names are consistent across the family.
 </div></details><details><summary>🍞 <b>PASS:</b> Ensure VFs have 'ital' STAT axis. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.google.fonts/check/italic_axis_in_stat">com.google.fonts/check/italic_axis_in_stat</a>)</summary><div>
 
 >
@@ -60,12 +72,14 @@ Fontbakery version: 0.8.11
 >This four-way distinction should also be reflected in the OS/2.fsSelection field, using bits 0 and 5.
 >
 * 💤 **SKIP** Unfulfilled Conditions: RIBBI_ttFonts
-</div></details><br></div></details><details><summary><b>[95] BDOGrotesk-Light.otf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[97] BDOGrotesk-Light.otf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
 >
 >An accent placed on characters with a "soft dot", like i or j, causes the dot to disappear. An explicit dot above can be added where required. See "Diacritics on i and j" in Section 7.1, "Latin" in The Unicode Standard.
 >
 >Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
+>
+>See also: https://googlefonts.github.io/gf-guide/diacritics.html#soft-dotted-glyphs
 >
 * 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
@@ -183,7 +197,7 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 
 	* aring (U+00E5) contains a short segment L<<546.0,50.0>--<542.0,50.0>> 
 
-	* 63 more.
+	* 51 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]
 </div></details><details><summary>⚠ <b>WARN:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
@@ -314,12 +328,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-short-s
 >Additionally, when a dotted circle glyph is present, it should be able to display all marks correctly, meaning that it should contain anchors for all attaching marks.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_ttf
-</div></details><details><summary>💤 <b>SKIP:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
-
->
->Malformed fonts can cause FreeType to crash.
->
-* 💤 **SKIP** FreeType is not available; to install it, invoke the 'freetype' extra when installing Font Bakery. [code: freetype-not-installed]
 </div></details><details><summary>💤 <b>SKIP:</b> Detect any interpolation issues in the font. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/interpolation_issues">com.google.fonts/check/interpolation_issues</a>)</summary><div>
 
 >
@@ -381,6 +389,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >This is the TTF/CFF2 equivalent of the CFF 'name/postscript_vs_cff' check.
 >
 * 💤 **SKIP** Unfulfilled Conditions: not is_cff
+</div></details><details><summary>💤 <b>SKIP:</b> Check name table IDs 1, 2, 16, 17 to conform to Italic style. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.google.fonts/check/name/italic_names">com.google.fonts/check/name/italic_names</a>)</summary><div>
+
+>
+>This check ensures that several entries in the name table conform to the font's Upright or Italic style, namely IDs 1 & 2 as well as 16 & 17 if they're present.
+>
+* 💤 **SKIP** Font is not Italic.
 </div></details><details><summary>💤 <b>SKIP:</b> Does the number of glyphs in the loca table match the maxp table? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/loca.html#com.google.fonts/check/loca/maxp_num_glyphs">com.google.fonts/check/loca/maxp_num_glyphs</a>)</summary><div>
 
 
@@ -706,9 +720,11 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >The 'Soft Hyphen' character (codepoint 0x00AD) is used to mark a hyphenation possibility within a word in the absence of or overriding dictionary hyphenation.
 >
->It is supposed to be zero-width and invisible.
+>It is sometimes designed empty with no width (such as a control character), sometimes the same as the traditional hyphen, sometimes double encoded with the hyphen.
 >
->It is also mostly an obsolete mechanism now, and the character is typicaly only included in fonts for legacy codepage coverage.
+>That being said, it is recommended to not include it in the font at all, because discretionary hyphenation should be handled at the level of the shaping engine, not the font. Also, even if present, the software would not display that character.
+>
+>More discussion at: https://typedrawers.com/discussion/2046/special-dash-things-softhyphen-horizontalbar
 >
 * 🍞 **PASS** Looks good!
 </div></details><details><summary>🍞 <b>PASS:</b> Ensure no GPOS7 lookups are present. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/gpos7">com.google.fonts/check/gpos7</a>)</summary><div>
@@ -721,6 +737,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >To fix this warning, rebuild the font with a recent version of fonttools.
 >
 * 🍞 **PASS** Font has no GPOS7 lookups
+</div></details><details><summary>🍞 <b>PASS:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
+
+>
+>Malformed fonts can cause FreeType to crash.
+>
+* 🍞 **PASS** Font can be rasterized by FreeType.
 </div></details><details><summary>🍞 <b>PASS:</b> Font has the proper sfntVersion value? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/sfnt_version">com.adobe.fonts/check/sfnt_version</a>)</summary><div>
 
 >
@@ -749,6 +771,28 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >This probably comes from the will to avoid additional tabular math signs knowing that their design can easily share the same width.
 >
 * 🍞 **PASS** Looks good.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking Vertical Metric Linegaps. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/linegaps">com.google.fonts/check/linegaps</a>)</summary><div>
+
+>
+>The LineGap value is a space added to the line height created by the union of the (typo/hhea)Ascender and (typo/hhea)Descender. It is handled differently according to the environment.
+>
+>This leading value will be added above the text line in most desktop apps. It will be shared above and under in web browsers, and ignored in Windows if Use_Typo_Metrics is disabled.
+>
+>For better linespacing consistency across platforms, (typo/hhea)LineGap values must be 0.
+>
+* 🍞 **PASS** OS/2 sTypoLineGap and hhea lineGap are both 0.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking STAT table entries in static fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/STAT_in_statics">com.google.fonts/check/STAT_in_statics</a>)</summary><div>
+
+>
+>Adobe feature syntax allows for the definition of a STAT table. Fonts built with a hand-coded STAT table in feature syntax may be built either as static or variable, but will end up with the same STAT table.
+>
+>This is a problem, because a STAT table which works on variable fonts will not be appropriate for static instances. The examples in the OpenType spec of non-variable fonts with a STAT table show that the table entries must be restricted to those entries which refer to the static font's position in the designspace. i.e. a Regular weight static should only have the following entry for the weight axis:
+>
+><AxisIndex value="0"/> <Flags value="2"/>  <!-- ElidableAxisValueName --> <ValueNameID value="265"/>  <!-- Regular --> <Value value="400.0"/>
+>
+>However, if the STAT table intended for a variable font is compiled into a static, it will have many entries for this axis. In this case, Windows will read the first entry only, causing all instances to report themselves as "Thin Condensed".
+>
+* 🍞 **PASS** Looks good!
 </div></details><details><summary>🍞 <b>PASS:</b> Is the CFF subr/gsubr call depth > 10? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/cff.html#com.adobe.fonts/check/cff_call_depth">com.adobe.fonts/check/cff_call_depth</a>)</summary><div>
 
 >
@@ -868,10 +912,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >The 'CFF ' table has a lot of information that is duplicated in other tables. This information should be consistent across tables, because there's no guarantee which table an app will get the data from.
 >
 * 🍞 **PASS** Name table PostScript name matches CFF table FontName.
-</div></details><details><summary>🍞 <b>PASS:</b> Checking Vertical Metric Linegaps. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/linegaps">com.google.fonts/check/linegaps</a>)</summary><div>
-
-
-* 🍞 **PASS** OS/2 sTypoLineGap and hhea lineGap are both 0.
 </div></details><details><summary>🍞 <b>PASS:</b> MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/maxadvancewidth">com.google.fonts/check/maxadvancewidth</a>)</summary><div>
 
 
@@ -964,5 +1004,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 1 | 7 | 43 | 2 | 52 | 0 |
-| 0% | 1% | 7% | 41% | 2% | 50% | 0% |
+| 0 | 1 | 7 | 43 | 2 | 55 | 0 |
+| 0% | 1% | 6% | 40% | 2% | 51% | 0% |

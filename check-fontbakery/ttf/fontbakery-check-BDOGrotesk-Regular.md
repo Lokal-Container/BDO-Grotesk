@@ -1,8 +1,8 @@
 ## Fontbakery report
 
-Fontbakery version: 0.8.11
+Fontbakery version: 0.8.13
 
-<details><summary><b>[10] Family checks</b></summary><div><details><summary>🍞 <b>PASS:</b> Checking all files are in the same directory. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/single_directory">com.google.fonts/check/family/single_directory</a>)</summary><div>
+<details><summary><b>[11] Family checks</b></summary><div><details><summary>🍞 <b>PASS:</b> Checking all files are in the same directory. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/single_directory">com.google.fonts/check/family/single_directory</a>)</summary><div>
 
 >
 >If the set of font files passed in the command line is not all in the same directory, then we warn the user since the tool will interpret the set of files as belonging to a single family (and it is unlikely that the user would store the files from a single family spreaded in several separate directories).
@@ -54,61 +54,32 @@ Fontbakery version: 0.8.11
 >'The Font Family name [...] should be shared among at most four fonts that differ only in weight or style [...]'
 >
 * 🍞 **PASS** There were no more than 4 fonts per family name.
+</div></details><details><summary>🍞 <b>PASS:</b> Verify that family names in the name table are consistent across all fonts in the family. Checks Typographic Family name (nameID 16) if present,  otherwise uses Font Family name (nameID 1) (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.adobe.fonts/check/family/consistent_family_name">com.adobe.fonts/check/family/consistent_family_name</a>)</summary><div>
+
+>
+>Per the OpenType spec: * "...many existing applications that use this pair of names assume that a Font Family name is shared by at most four fonts that form a font style-linking group" * "For extended typographic families that includes fonts other than the four basic styles(regular, italic, bold, bold italic), it is strongly recommended that name IDs 16 and 17 be used in fonts to create an extended, typographic grouping." * "If name ID 16 is absent, then name ID 1 is considered to be the typographic family name."
+>
+>https://learn.microsoft.com/en-us/typography/opentype/spec/name
+>
+>Fonts within a font family all must have consistent names in the Typographic Family name (nameID 16) or Font Family name (nameID 1), depending on which it uses.
+>
+>Inconsistent font/typographic family names across fonts in a family can result in unexpected behaviors, such as broken style linking.
+>
+* 🍞 **PASS** Font family names are consistent across the family.
 </div></details><details><summary>🍞 <b>PASS:</b> Ensure VFs have 'ital' STAT axis. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/stat.html#com.google.fonts/check/italic_axis_in_stat">com.google.fonts/check/italic_axis_in_stat</a>)</summary><div>
 
 >
 >Check that related Upright and Italic VFs have a 'ital' axis in STAT table.
 >
 * 🍞 **PASS** OK
-</div></details><br></div></details><details><summary><b>[95] BDOGrotesk-Regular.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
-
->
->Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
->
->From a designers point of view, this sounds like a win (less work). However, such approaches can lead to rasterization issues, such as having the 'u' not sitting on the baseline at certain sizes after running the font through ttfautohint.
->
->Other issues are outlines that end up reversed when only one dimension is flipped while the other isn't.
->
->As of July 2019, Marc Foley observed that ttfautohint assigns cvt values to transformed glyphs as if they are not transformed and the result is they render very badly, and that vttLib does not support flipped components.
->
->When building the font with fontmake, the problem can be fixed by adding this to the command line:
->
->--filter DecomposeTransformedComponentsFilter
->
-* 🔥 **FAIL** The following glyphs had components with scaling or rotation
-or inverted outline direction:
-
-* uni27E9 (component uni27E8)
-* uni27EB (component uni27EA)
-* uni27ED (component uni27EC)
-* exclamdown (component exclam)
-* backslash (component slash)
-* backslash.ss02 (component slash.ss02)
-* braceright (component braceleft)
-* uni2E29 (component uni2E28)
-* braceright.case (component braceleft.case)
-* uni3011.case (component uni3010.case)
-* arrowdown (component arrowup)
-* arrowleft (component arrowright)
-* uni21A4 (component uni21A6)
-* uni21AA (component uni21A9)
-* uni21B1 (component uni21B0)
-* uni21B3 (component uni21B2)
-* uni21BB (component uni21BA)
-* uni21CA (component uni21C8)
-* uni2198.ss04 (component uni2197.ss04)
-* arrowdown.ss04 (component arrowup.ss04)
-* uni2196.ss04 (component uni2197.ss04)
-* uni25A8 (component uni25A7)
-* uni25C0 (component uni25B6)
-* uni25C1 (component uni25B7)
- [code: transformed-components]
-</div></details><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
+</div></details><br></div></details><details><summary><b>[97] BDOGrotesk-Regular.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Ensure soft_dotted characters lose their dot when combined with marks that replace the dot. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/soft_dotted">com.google.fonts/check/soft_dotted</a>)</summary><div>
 
 >
 >An accent placed on characters with a "soft dot", like i or j, causes the dot to disappear. An explicit dot above can be added where required. See "Diacritics on i and j" in Section 7.1, "Latin" in The Unicode Standard.
 >
 >Characters with the Soft_Dotted property are listed in https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
+>
+>See also: https://googlefonts.github.io/gf-guide/diacritics.html#soft-dotted-glyphs
 >
 * 🔥 **FAIL** The dot of soft dotted characters used in orthographies must disappear in the following strings: į̀ į́ į̂ į̃ į̄ į̌ ị̀ ị́ ị̂ ị̃ ị̄
 
@@ -198,7 +169,7 @@ The following glyphs do not have the recommended number of contours:
 
 	- Glyph name: ohorn	Contours detected: 3	Expected: 2 
 
-	- 76 more.
+	- 52 more.
 
 Use -F or --full-lists to disable shortening of long lists.
  [code: contour-count]
@@ -271,9 +242,41 @@ notequal
 
 	* aring (U+00E5): X=391.0,Y=730.0 (should be at cap-height 729?) 
 
-	* 61 more.
+	* 73 more.
 
 Use -F or --full-lists to disable shortening of long lists. [code: found-misalignments]
+</div></details><details><summary>⚠ <b>WARN:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
+
+>
+>This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).
+>
+>This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.
+>
+* ⚠ **WARN** The following glyphs have segments which seem very short:
+
+	* dollar (U+0024) contains a short segment L<<353.0,419.0>--<358.0,418.0>>
+
+	* less (U+003C) contains a short segment L<<169.0,350.0>--<169.0,342.0>>
+
+	* greater (U+003E) contains a short segment L<<439.0,342.0>--<439.0,350.0>>
+
+	* a (U+0061) contains a short segment B<<551.0,71.0>-<559.0,71.0>-<563.0,71.5>>
+
+	* a (U+0061) contains a short segment B<<563.0,71.5>-<567.0,72.0>-<568.0,73.0>>
+
+	* f (U+0066) contains a short segment L<<305.0,702.0>--<299.0,702.0>>
+
+	* r (U+0072) contains a short segment L<<351.0,466.0>--<344.0,466.0>>
+
+	* y (U+0079) contains a short segment L<<52.0,-81.0>--<60.0,-81.0>>
+
+	* ordfeminine (U+00AA) contains a short segment B<<419.0,370.0>-<424.0,370.0>-<427.5,370.5>>
+
+	* ordfeminine (U+00AA) contains a short segment B<<427.5,370.5>-<431.0,371.0>-<435.0,371.0>> 
+
+	* 87 more.
+
+Use -F or --full-lists to disable shortening of long lists. [code: found-short-segments]
 </div></details><details><summary>⚠ <b>WARN:</b> Do any segments have colinear vectors? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_colinear_vectors">com.google.fonts/check/outline_colinear_vectors</a>)</summary><div>
 
 >
@@ -287,19 +290,17 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 
 	* exclam (U+0021): L<<200.0,729.0>--<200.0,551.0>> -> L<<200.0,551.0>--<180.0,218.0>>
 
-	* exclamdown (U+00A1): L<<117.0,345.0>--<97.0,12.0>> -> L<<97.0,12.0>--<97.0,-166.0>>
+	* exclamdown (U+00A1): L<<180.0,345.0>--<200.0,12.0>> -> L<<200.0,12.0>--<200.0,-166.0>>
 
-	* exclamdown (U+00A1): L<<200.0,-166.0>--<200.0,12.0>> -> L<<200.0,12.0>--<180.0,345.0>>
+	* exclamdown (U+00A1): L<<97.0,-166.0>--<97.0,12.0>> -> L<<97.0,12.0>--<117.0,345.0>>
 
 	* radical (U+221A): L<<304.0,397.0>--<304.0,397.0>> -> L<<304.0,397.0>--<305.0,397.0>>
 
 	* uni21BA (U+21BA): L<<493.0,588.0>--<497.0,527.0>> -> L<<497.0,527.0>--<497.0,396.0>>
 
-	* uni21BA (U+21BA): L<<752.0,643.0>--<613.0,643.0>> -> L<<613.0,643.0>--<556.0,647.0>>
+	* uni21BA (U+21BA): L<<752.0,643.0>--<613.0,643.0>> -> L<<613.0,643.0>--<556.0,647.0>> 
 
-	* uni21BB (U+21BB): L<<101.0,643.0>--<240.0,643.0>> -> L<<240.0,643.0>--<297.0,647.0>> 
-
-	* uni21BB (U+21BB): L<<360.0,588.0>--<356.0,527.0>> -> L<<356.0,527.0>--<356.0,396.0>> [code: found-colinear-vectors]
+	* uni21BB (U+21BB): L<<356.0,396.0>--<356.0,527.0>> -> L<<356.0,527.0>--<360.0,588.0>> [code: found-colinear-vectors]
 </div></details><details><summary>⚠ <b>WARN:</b> Do outlines contain any semi-vertical or semi-horizontal lines? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_semi_vertical">com.google.fonts/check/outline_semi_vertical</a>)</summary><div>
 
 >
@@ -309,7 +310,7 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-misalig
 >
 * ⚠ **WARN** The following glyphs have semi-vertical/semi-horizontal lines:
 
-	* arrowleft (U+2190): L<<229.0,292.0>--<859.0,293.0>>
+	* arrowleft (U+2190): L<<859.0,293.0>--<229.0,292.0>>
 
 	* arrowright (U+2192): L<<720.0,292.0>--<90.0,293.0>>
 
@@ -360,12 +361,6 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-semi-ve
 >The chws_tool utility (https://github.com/googlefonts/chws_tool) can be used to add these features automatically.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_cjk_font
-</div></details><details><summary>💤 <b>SKIP:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
-
->
->Malformed fonts can cause FreeType to crash.
->
-* 💤 **SKIP** FreeType is not available; to install it, invoke the 'freetype' extra when installing Font Bakery. [code: freetype-not-installed]
 </div></details><details><summary>💤 <b>SKIP:</b> Detect any interpolation issues in the font. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/interpolation_issues">com.google.fonts/check/interpolation_issues</a>)</summary><div>
 
 >
@@ -407,6 +402,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >The 'CFF ' table has a lot of information that is duplicated in other tables. This information should be consistent across tables, because there's no guarantee which table an app will get the data from.
 >
 * 💤 **SKIP** Unfulfilled Conditions: is_cff
+</div></details><details><summary>💤 <b>SKIP:</b> Check name table IDs 1, 2, 16, 17 to conform to Italic style. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/name.html#com.google.fonts/check/name/italic_names">com.google.fonts/check/name/italic_names</a>)</summary><div>
+
+>
+>This check ensures that several entries in the name table conform to the font's Upright or Italic style, namely IDs 1 & 2 as well as 16 & 17 if they're present.
+>
+* 💤 **SKIP** Font is not Italic.
 </div></details><details><summary>💤 <b>SKIP:</b> The variable font 'wght' (Weight) axis coordinate must be 400 on the 'Regular' instance. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/fvar.html#com.google.fonts/check/varfont/regular_wght_coord">com.google.fonts/check/varfont/regular_wght_coord</a>)</summary><div>
 
 >
@@ -720,11 +721,29 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >
 >The 'Soft Hyphen' character (codepoint 0x00AD) is used to mark a hyphenation possibility within a word in the absence of or overriding dictionary hyphenation.
 >
->It is supposed to be zero-width and invisible.
+>It is sometimes designed empty with no width (such as a control character), sometimes the same as the traditional hyphen, sometimes double encoded with the hyphen.
 >
->It is also mostly an obsolete mechanism now, and the character is typicaly only included in fonts for legacy codepage coverage.
+>That being said, it is recommended to not include it in the font at all, because discretionary hyphenation should be handled at the level of the shaping engine, not the font. Also, even if present, the software would not display that character.
+>
+>More discussion at: https://typedrawers.com/discussion/2046/special-dash-things-softhyphen-horizontalbar
 >
 * 🍞 **PASS** Looks good!
+</div></details><details><summary>🍞 <b>PASS:</b> Ensure component transforms do not perform scaling or rotation. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/transformed_components">com.google.fonts/check/transformed_components</a>)</summary><div>
+
+>
+>Some families have glyphs which have been constructed by using transformed components e.g the 'u' being constructed from a flipped 'n'.
+>
+>From a designers point of view, this sounds like a win (less work). However, such approaches can lead to rasterization issues, such as having the 'u' not sitting on the baseline at certain sizes after running the font through ttfautohint.
+>
+>Other issues are outlines that end up reversed when only one dimension is flipped while the other isn't.
+>
+>As of July 2019, Marc Foley observed that ttfautohint assigns cvt values to transformed glyphs as if they are not transformed and the result is they render very badly, and that vttLib does not support flipped components.
+>
+>When building the font with fontmake, the problem can be fixed by adding this to the command line:
+>
+>--filter DecomposeTransformedComponentsFilter
+>
+* 🍞 **PASS** No glyphs had components with scaling or rotation
 </div></details><details><summary>🍞 <b>PASS:</b> Ensure dotted circle glyph is present and can attach marks. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/dotted_circle">com.google.fonts/check/dotted_circle</a>)</summary><div>
 
 >
@@ -745,6 +764,12 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >To fix this warning, rebuild the font with a recent version of fonttools.
 >
 * 🍞 **PASS** Font has no GPOS7 lookups
+</div></details><details><summary>🍞 <b>PASS:</b> Ensure that the font can be rasterized by FreeType. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/freetype_rasterizer">com.adobe.fonts/check/freetype_rasterizer</a>)</summary><div>
+
+>
+>Malformed fonts can cause FreeType to crash.
+>
+* 🍞 **PASS** Font can be rasterized by FreeType.
 </div></details><details><summary>🍞 <b>PASS:</b> Font has the proper sfntVersion value? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.adobe.fonts/check/sfnt_version">com.adobe.fonts/check/sfnt_version</a>)</summary><div>
 
 >
@@ -765,6 +790,28 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >This is automatic substitution by the text editors, not by fonts. It is also used by designers in text composition practice to create nicely shaped paragraphs. If the space and the nbspace are not the same width, it breaks the text composition of documents.
 >
 * 🍞 **PASS** Space and non-breaking space have the same width.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking Vertical Metric Linegaps. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/linegaps">com.google.fonts/check/linegaps</a>)</summary><div>
+
+>
+>The LineGap value is a space added to the line height created by the union of the (typo/hhea)Ascender and (typo/hhea)Descender. It is handled differently according to the environment.
+>
+>This leading value will be added above the text line in most desktop apps. It will be shared above and under in web browsers, and ignored in Windows if Use_Typo_Metrics is disabled.
+>
+>For better linespacing consistency across platforms, (typo/hhea)LineGap values must be 0.
+>
+* 🍞 **PASS** OS/2 sTypoLineGap and hhea lineGap are both 0.
+</div></details><details><summary>🍞 <b>PASS:</b> Checking STAT table entries in static fonts. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/STAT_in_statics">com.google.fonts/check/STAT_in_statics</a>)</summary><div>
+
+>
+>Adobe feature syntax allows for the definition of a STAT table. Fonts built with a hand-coded STAT table in feature syntax may be built either as static or variable, but will end up with the same STAT table.
+>
+>This is a problem, because a STAT table which works on variable fonts will not be appropriate for static instances. The examples in the OpenType spec of non-variable fonts with a STAT table show that the table entries must be restricted to those entries which refer to the static font's position in the designspace. i.e. a Regular weight static should only have the following entry for the weight axis:
+>
+><AxisIndex value="0"/> <Flags value="2"/>  <!-- ElidableAxisValueName --> <ValueNameID value="265"/>  <!-- Regular --> <Value value="400.0"/>
+>
+>However, if the STAT table intended for a variable font is compiled into a static, it will have many entries for this axis. In this case, Windows will read the first entry only, causing all instances to report themselves as "Thin Condensed".
+>
+* 🍞 **PASS** Looks good!
 </div></details><details><summary>🍞 <b>PASS:</b> Checking unitsPerEm value is reasonable. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/head.html#com.google.fonts/check/unitsperem">com.google.fonts/check/unitsperem</a>)</summary><div>
 
 >
@@ -908,10 +955,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 
 * 🍞 **PASS** 'loca' table matches numGlyphs in 'maxp' table.
-</div></details><details><summary>🍞 <b>PASS:</b> Checking Vertical Metric Linegaps. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/linegaps">com.google.fonts/check/linegaps</a>)</summary><div>
-
-
-* 🍞 **PASS** OS/2 sTypoLineGap and hhea lineGap are both 0.
 </div></details><details><summary>🍞 <b>PASS:</b> MaxAdvanceWidth is consistent with values in the Hmtx and Hhea tables? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/hhea.html#com.google.fonts/check/maxadvancewidth">com.google.fonts/check/maxadvancewidth</a>)</summary><div>
 
 
@@ -1014,14 +1057,6 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 >Incorrect language tags can be indications of typos, leftover debugging code or questionable approaches, or user error in the font editor. Such typos can cause features and language support to fail to work as intended.
 >
 * 🍞 **PASS** No invalid language tags were found
-</div></details><details><summary>🍞 <b>PASS:</b> Are any segments inordinately short? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_short_segments">com.google.fonts/check/outline_short_segments</a>)</summary><div>
-
->
->This check looks for outline segments which seem particularly short (less than 0.6% of the overall path length).
->
->This check is not run for variable fonts, as they may legitimately have short segments. As this check is liable to generate significant numbers of false positives, it will pass if there are more than 100 reported short segments.
->
-* 🍞 **PASS** So many short segments were found that this was probably by design.
 </div></details><details><summary>🍞 <b>PASS:</b> Do outlines contain any jaggy segments? (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Outline Correctness Checks>.html#com.google.fonts/check/outline_jaggy_segments">com.google.fonts/check/outline_jaggy_segments</a>)</summary><div>
 
 >
@@ -1034,5 +1069,5 @@ You'll also need to use the `--configuration` flag when invoking fontbakery.
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 2 | 7 | 34 | 2 | 60 | 0 |
-| 0% | 2% | 7% | 32% | 2% | 57% | 0% |
+| 0 | 1 | 8 | 34 | 2 | 63 | 0 |
+| 0% | 1% | 7% | 31% | 2% | 58% | 0% |
